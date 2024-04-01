@@ -1344,11 +1344,11 @@ class KerykeionChartSVG:
         # bottom left
         td["bottomLeft1"] = ""
         td["bottomLeft2"] = ""
-        td["bottomLeft3"] = "" #f'{self.language_settings.get("lunar_phase", "Lunar Phase")}: {self.language_settings.get("day", "Day")} {self.user.lunar_phase.get("moon_phase", "")}'
+        td["bottomLeft3"] = f'{self.language_settings.get("lunar_phase", "Lunar Phase")}: {self.language_settings.get("day", "Day")} {self.user.lunar_phase.get("moon_phase", "")}'
         td["bottomLeft4"] = ""
 
         # lunar phase
-        deg = ""#self.user.lunar_phase["degrees_between_s_m"]
+        deg = self.user.lunar_phase["degrees_between_s_m"]
 
         lffg = None
         lfbg = None
