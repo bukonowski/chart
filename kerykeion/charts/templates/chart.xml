@@ -16,7 +16,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
         <g transform="rotate($cfgRotate)">
             <g transform="scale($cfgZoom)">
                 <!---Rectangulo para ver espacio del svg-->
-                <rect x="0" y="0" width="100%" height="100%" style="fill: gray" />
+                <rect x="0" y="0" width="100%" height="100%" style="fill: #1d2c56" />
                 <g transform="translate(200,500)">
                     <text x="20" y="30" style="fill: $paper_color_0; font-size: 24px">$stringTitle</text>
                     <text x="20" y="62" style="fill: $paper_color_0; font-size: 11px">$stringLocation</text>
@@ -484,7 +484,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                         <!-- TransitRing -->
                         $transitRing
                         <!-- Degree Ring -->
-                        $degreeRing
+                        <!-- $degreeRing -->
                         <!-- Houses -->
                         $makeHouses
                         <!-- Planets -->
