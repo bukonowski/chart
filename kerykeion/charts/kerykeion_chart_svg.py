@@ -63,7 +63,7 @@ class KerykeionChartSVG:
 
         # SVG Width and Height - Adjusted for A4 format and aspect ratio
         self.natal_width = 595.28  # Width of A4 in points (72 points per inch)
-        self.natal_height = self.natal_width * 1.414  # Height maintaining the aspect ratio
+        #self.natal_height = self.natal_width * 1.414  # Height maintaining the aspect ratio
         self.full_width = 595.28  # Full width for A4 format
 
         self.parse_json_settings(new_settings_file)
@@ -148,10 +148,10 @@ class KerykeionChartSVG:
 
         # screen size
         if self.chart_type == "Natal":
-            self.screen_width = 772.2
+            self.screen_width = 595.28
         else:
-            self.screen_width = 1200
-        self.screen_height = 772.2
+            self.screen_width = 595.28
+        self.screen_height = 1200
 
         # check for home
         self.home_location = self.user.city

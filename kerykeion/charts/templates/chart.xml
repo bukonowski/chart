@@ -5,11 +5,11 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
 <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    width="$svgWidth"
-    height="$svgHeight"
-    viewBox="$viewbox"
-    preserveAspectRatio="xMidYMid"
->
+    width="210mm"
+    height="297mm"
+    viewBox="0 0 210 297"
+    preserveAspectRatio="xMidYMid">
+
     <title>Kerykeion</title>
     <g transform="translate($cfgTranslate)">
         <g transform="rotate($cfgRotate)">
