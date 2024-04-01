@@ -1006,8 +1006,8 @@ class KerykeionChartSVG:
     def _makeAspectGrid(self, r):
         out = ""
         style = "stroke:%s; stroke-width: 1px; stroke-opacity:.6; fill:none" % (self.chart_colors_settings["paper_0"])
-        xindent = 380
-        yindent = 468
+        xindent = 380 #Modificado
+        yindent = 750 #Modificado
         box = 14
         revr = list(range(len(self.available_planets_setting)))
         revr.reverse()
@@ -1125,8 +1125,8 @@ class KerykeionChartSVG:
         li = 10
         offset = 0
 
-        out = '<g transform="translate(500,-20)">'
-        out += '<g transform="translate(140, -15)">'
+        out = '<g transform="translate(50,550)">' #Modificado
+        out += '<g transform="translate(140, -15)">' #Modificado
         out += f'<text text-anchor="end" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 14px;">{self.language_settings["planets_and_house"]} {self.name}:</text>'
         out += "</g>"
 

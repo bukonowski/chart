@@ -18,7 +18,6 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                 <!---Rectangulo para ver espacio del svg-->
                 <rect x="0" y="0" width="100%" height="100%" style="fill: gray" />
                 <text x="20" y="30" style="fill: $paper_color_0; font-size: 24px">$stringTitle</text>
-                <text x="20" y="50" style="fill: $paper_color_0; font-size: 11px">$stringName</text>
                 <text x="20" y="62" style="fill: $paper_color_0; font-size: 11px">$stringLocation</text>
                 <text x="20" y="74" style="fill: $paper_color_0; font-size: 11px">$stringDateTime</text>
                 <text x="20" y="86" style="fill: $paper_color_0; font-size: 11px">$stringLat</text>
@@ -471,7 +470,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                 </symbol>
                 <!-- ESQUEMA GENERAL -->
                 <g transform="translate(0,0)">
-                    <g transform="translate($circleX,$circleY)">
+                    <g transform="translate(55,0)">
                         <!-- Zodiac -->
                         $makeZodiac
                         <!-- First Circle -->
@@ -496,7 +495,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                     <!-- AspectGrid -->
                     $makeAspectGrid
                     <!-- Elements -->
-                    $makeElements
+                    <!-- $makeElements -->
                     <!-- Planet Grid -->
                     $makePlanetGrid
                     <!-- Houses Grid -->
