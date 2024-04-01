@@ -1126,7 +1126,7 @@ class KerykeionChartSVG:
         offset = 0
 
         out = '<g transform="translate(50,550)">' #Modificado
-        out += '<g transform="translate(140, -15)">' #Modificado
+        out += '<g transform="translate(100, -15)">' #Modificado
         out += f'<text text-anchor="end" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 14px;">{self.language_settings["planets_and_house"]} {self.name}:</text>'
         out += "</g>"
 
@@ -1337,14 +1337,14 @@ class KerykeionChartSVG:
 
         # Tipo di carta
         if self.chart_type == "Synastry" or self.name == "Transit":
-            td["stringName"] = f"{self.name}:"
+            td["stringName"] = ""#f"{self.name}:"
         else:
-            td["stringName"] = f'{self.language_settings["info"]}:'
+            td["stringName"] = ""#f'{self.language_settings["info"]}:'
 
         # bottom left
         td["bottomLeft1"] = ""
         td["bottomLeft2"] = ""
-        td["bottomLeft3"] = f'{self.language_settings.get("lunar_phase", "Lunar Phase")}: {self.language_settings.get("day", "Day")} {self.user.lunar_phase.get("moon_phase", "")}'
+        td["bottomLeft3"] = ""#f'{self.language_settings.get("lunar_phase", "Lunar Phase")}: {self.language_settings.get("day", "Day")} {self.user.lunar_phase.get("moon_phase", "")}'
         td["bottomLeft4"] = ""
 
         # lunar phase
@@ -1392,14 +1392,14 @@ class KerykeionChartSVG:
         if lffg is None or lfbg is None or lfcx is None or lfr is None:
             raise KerykeionException("Lunar phase error")
 
-        td["lunar_phase_fg"] = lffg
-        td["lunar_phase_bg"] = lfbg
-        td["lunar_phase_cx"] = lfcx
-        td["lunar_phase_r"] = lfr
-        td["lunar_phase_outline"] = self.chart_colors_settings["lunar_phase_2"]
+        td["lunar_phase_fg"] = ""#lffg
+        td["lunar_phase_bg"] = "#1d2c56"#lfbg
+        td["lunar_phase_cx"] = ""#lfcx
+        td["lunar_phase_r"] = ""#lfr
+        td["lunar_phase_outline"] = ""#self.chart_colors_settings["lunar_phase_2"]
 
         # rotation based on latitude
-        td["lunar_phase_rotate"] = -90.0 - self.geolat
+        td["lunar_phase_rotate"] = ""#-90.0 - self.geolat
 
         # stringlocation
         if len(self.location) > 35:
