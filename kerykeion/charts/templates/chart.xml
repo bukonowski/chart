@@ -5,12 +5,14 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
 <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    width="210mm"
-    height="297mm"
-    viewBox="0 0 210 297"
+    width="$svgWidth"
+    height="$svgHeight"
+    viewBox="$viewbox"
     preserveAspectRatio="xMidYMid">
 
     <title>Kerykeion</title>
+            <!---Rectangulo para ver espacio del svg-->
+    <rect width="100%" height="100%" fill="gray" />
     <g transform="translate($cfgTranslate)">
         <g transform="rotate($cfgRotate)">
             <g transform="scale($cfgZoom)">
@@ -468,7 +470,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                     />
                 </symbol>
                 <!-- ESQUEMA GENERAL -->
-                <g transform="translate(50,50)">
+                <g transform="translate(0,0)">
                     <g transform="translate($circleX,$circleY)">
                         <!-- Zodiac -->
                         $makeZodiac
@@ -498,7 +500,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                     <!-- Planet Grid -->
                     $makePlanetGrid
                     <!-- Houses Grid -->
-                    $makeHousesGrid
+                    <!-- $makeHousesGrid -->
                 </g>
 
             </g>
