@@ -467,6 +467,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                         style="fill: $paper_color_0"
                     />
                 </symbol>
+                <!-- ESQUEMA GENERAL -->
                 <g transform="translate(50,50)">
                     <g transform="translate($circleX,$circleY)">
                         <!-- Zodiac -->
