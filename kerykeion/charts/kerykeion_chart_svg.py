@@ -61,9 +61,10 @@ class KerykeionChartSVG:
 
         self.xml_svg = DATA_DIR / "templates/chart.xml"
 
-        # SVG Width
-        self.natal_width = 772.2
-        self.full_width = 1200
+        # SVG Width and Height - Adjusted for A4 format and aspect ratio
+        self.natal_width = 595.28  # Width of A4 in points (72 points per inch)
+        self.natal_height = self.natal_width * 1.414  # Height maintaining the aspect ratio
+        self.full_width = 595.28  # Full width for A4 format
 
         self.parse_json_settings(new_settings_file)
         self.chart_type = chart_type

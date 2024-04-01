@@ -500,6 +500,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                     <!-- Houses Grid -->
                     $makeHousesGrid
                 </g>
+
             </g>
         </g>
     </g>
