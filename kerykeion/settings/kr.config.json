@@ -215,7 +215,7 @@
       "is_major": 1,
       "is_minor": 0,
       "orb": 10,
-      "color": "#5757e2"
+      "color": "#FFFFFF"
     },
     {
       "degree": 30,
@@ -225,7 +225,7 @@
       "is_major": 0,
       "is_minor": 1,
       "orb": 1,
-      "color": "#810757"
+      "color": "#FFFFFF"
     },
     {
       "degree": 45,
@@ -235,7 +235,7 @@
       "is_major": 0,
       "is_minor": 1,
       "orb": 1,
-      "color": "#b14e58"
+      "color": "#FFFFFF"
     },
     {
       "degree": 60,
@@ -245,7 +245,7 @@
       "is_major": 1,
       "is_minor": 0,
       "orb": 6,
-      "color": "#d59e28"
+      "color": "#FFFFFF"
     },
     {
       "degree": 72,
@@ -255,7 +255,7 @@
       "is_major": 0,
       "is_minor": 1,
       "orb": 1,
-      "color": "#1f99b3"
+      "color": "#FFFFFF"
     },
     {
       "degree": 90,
@@ -265,7 +265,7 @@
       "is_major": 1,
       "is_minor": 0,
       "orb": 5,
-      "color": "#dc0000"
+      "color": "#FFFFFF"
     },
     {
       "degree": 120,
@@ -275,7 +275,7 @@
       "is_major": 1,
       "is_minor": 0,
       "orb": 8,
-      "color": "#36d100"
+      "color": "#FFFFFF"
     },
     {
       "degree": 135,
@@ -285,7 +285,7 @@
       "is_major": 0,
       "is_minor": 1,
       "orb": 1,
-      "color": "#985a10"
+      "color": "#FFFFFF"
     },
     {
       "degree": 144,
@@ -295,7 +295,7 @@
       "is_major": 0,
       "is_minor": 1,
       "orb": 1,
-      "color": "#7a9810"
+      "color": "#FFFFFF"
     },
     {
       "degree": 150,
@@ -305,7 +305,7 @@
       "is_major": 0,
       "is_minor": 0,
       "orb": 1,
-      "color": "#26bbcf"
+      "color": "#FFFFFF"
     },
     {
       "degree": 180,
@@ -315,14 +315,14 @@
       "is_major": 1,
       "is_minor": 0,
       "orb": 10,
-      "color": "#510060"
+      "color": "#FFFFFF"
     }
   ],
   "celestial_points": [
     {
       "id": 0,
       "name": "Sun",
-      "color": "#984b00",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 40,
       "related_zodiac_signs": ["4"],
@@ -331,7 +331,7 @@
     {
       "id": 1,
       "name": "Moon",
-      "color": "#150052",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 40,
       "related_zodiac_signs": ["3"],
@@ -340,7 +340,7 @@
     {
       "id": 2,
       "name": "Mercury",
-      "color": "#520800",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 15,
       "related_zodiac_signs": ["2", "5"],
@@ -349,7 +349,7 @@
     {
       "id": 3,
       "name": "Venus",
-      "color": "#400052",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 15,
       "related_zodiac_signs": ["1", "6"],
@@ -358,7 +358,7 @@
     {
       "id": 4,
       "name": "Mars",
-      "color": "#540000",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 15,
       "related_zodiac_signs": ["0"],
@@ -367,7 +367,7 @@
     {
       "id": 5,
       "name": "Jupiter",
-      "color": "#47133d",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 10,
       "related_zodiac_signs": ["8"],
@@ -376,7 +376,7 @@
     {
       "id": 6,
       "name": "Saturn",
-      "color": "#124500",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 10,
       "related_zodiac_signs": ["9"],
@@ -385,7 +385,7 @@
     {
       "id": 7,
       "name": "Uranus",
-      "color": "#6f0766",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 10,
       "related_zodiac_signs": ["10"],
@@ -394,7 +394,7 @@
     {
       "id": 8,
       "name": "Neptune",
-      "color": "#06537f",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 10,
       "related_zodiac_signs": ["11"],
@@ -403,7 +403,7 @@
     {
       "id": 9,
       "name": "Pluto",
-      "color": "#713f04",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 10,
       "related_zodiac_signs": ["7"],
@@ -412,7 +412,7 @@
     {
       "id": 10,
       "name": "Mean_Node",
-      "color": "#4c1541",
+      "color": "#ffffff",
       "is_active": false,
       "element_points": 0,
       "related_zodiac_signs": [],
@@ -421,7 +421,7 @@
     {
       "id": 11,
       "name": "True_Node",
-      "color": "#4c1541",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 20,
       "related_zodiac_signs": [],
@@ -430,7 +430,7 @@
     {
       "id": 12,
       "name": "Chiron",
-      "color": "#666f06",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 0,
       "related_zodiac_signs": [],
@@ -439,7 +439,7 @@
     {
       "id": 13,
       "name": "First_House",
-      "color": "#ff7e00",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 40,
       "related_zodiac_signs": [],
@@ -448,7 +448,7 @@
     {
       "id": 14,
       "name": "Tenth_House",
-      "color": "#FF0000",
+      "color": "#ffffff",
       "is_active": true,
       "element_points": 20,
       "related_zodiac_signs": [],
@@ -457,7 +457,7 @@
     {
       "id": 15,
       "name": "Seventh_House",
-      "color": "#0000FF",
+      "color": "#ffffff",
       "is_active": false,
       "element_points": 0,
       "related_zodiac_signs": [],
@@ -466,7 +466,7 @@
     {
       "id": 16,
       "name": "Fourth_House",
-      "color": "#000000",
+      "color": "#ffffff",
       "is_active": false,
       "element_points": 0,
       "related_zodiac_signs": [],
@@ -475,40 +475,40 @@
   ],
   "chart_colors": {
     "paper_0": "#FFFFFF",
-    "paper_1": "#ffffff",
-    "zodiac_bg_0": "#ff7200",
-    "zodiac_bg_1": "#6b3d00",
-    "zodiac_bg_2": "#69acf1",
-    "zodiac_bg_3": "#2b4972",
-    "zodiac_bg_4": "#ff7200",
-    "zodiac_bg_5": "#6b3d00",
-    "zodiac_bg_6": "#69acf1",
-    "zodiac_bg_7": "#2b4972",
-    "zodiac_bg_8": "#ff7200",
-    "zodiac_bg_9": "#6b3d00",
-    "zodiac_bg_10": "#69acf1",
-    "zodiac_bg_11": "#2b4972",
-    "zodiac_icon_0": "#ff7200",
-    "zodiac_icon_1": "#6b3d00",
-    "zodiac_icon_2": "#69acf1",
-    "zodiac_icon_3": "#2b4972",
-    "zodiac_icon_4": "#ff7200",
-    "zodiac_icon_5": "#6b3d00",
-    "zodiac_icon_6": "#69acf1",
-    "zodiac_icon_7": "#2b4972",
-    "zodiac_icon_8": "#ff7200",
-    "zodiac_icon_9": "#6b3d00",
-    "zodiac_icon_10": "#69acf1",
-    "zodiac_icon_11": "#2b4972",
-    "zodiac_radix_ring_0": "#ff0000",
-    "zodiac_radix_ring_1": "#ff0000",
-    "zodiac_radix_ring_2": "#ff0000",
-    "zodiac_transit_ring_0": "#ff0000",
-    "zodiac_transit_ring_1": "#ff0000",
-    "zodiac_transit_ring_2": "#0000ff",
-    "zodiac_transit_ring_3": "#0000ff",
-    "houses_radix_line": "#ff0000",
-    "houses_transit_line": "#0000ff",
+    "paper_1": "#1d2c56",
+    "zodiac_bg_0": "#d7db92",
+    "zodiac_bg_1": "#d7db92",
+    "zodiac_bg_2": "#d7db92",
+    "zodiac_bg_3": "#d7db92",
+    "zodiac_bg_4": "#d7db92",
+    "zodiac_bg_5": "#d7db92",
+    "zodiac_bg_6": "#d7db92",
+    "zodiac_bg_7": "#d7db92",
+    "zodiac_bg_8": "#d7db92",
+    "zodiac_bg_9": "#d7db92",
+    "zodiac_bg_10": "#d7db92",
+    "zodiac_bg_11": "#d7db92",
+    "zodiac_icon_0": "#FFFFFF",
+    "zodiac_icon_1": "#FFFFFF",
+    "zodiac_icon_2": "#FFFFFF",
+    "zodiac_icon_3": "#FFFFFF",
+    "zodiac_icon_4": "#FFFFFF",
+    "zodiac_icon_5": "#FFFFFF",
+    "zodiac_icon_6": "#FFFFFF",
+    "zodiac_icon_7": "#FFFFFF",
+    "zodiac_icon_8": "#FFFFFF",
+    "zodiac_icon_9": "#FFFFFF",
+    "zodiac_icon_10": "#FFFFFF",
+    "zodiac_icon_11": "#FFFFFF",
+    "zodiac_radix_ring_0": "#FFFF00",
+    "zodiac_radix_ring_1": "#FFFF00",
+    "zodiac_radix_ring_2": "#FFFF00",
+    "zodiac_transit_ring_0": "#FFFF00",
+    "zodiac_transit_ring_1": "#FFFF00",
+    "zodiac_transit_ring_2": "#FFFF00",
+    "zodiac_transit_ring_3": "#FFFF00",
+    "houses_radix_line": "#FFFF00",
+    "houses_transit_line": "#FFFF00",
     "lunar_phase_0": "#000000",
     "lunar_phase_1": "#FFFFFF",
     "lunar_phase_2": "#CCCCCC"

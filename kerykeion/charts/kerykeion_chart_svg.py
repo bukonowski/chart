@@ -401,7 +401,7 @@ class KerykeionChartSVG:
                 + self._zodiacSlice(
                     i,
                     r,
-                    f'fill:{self.chart_colors_settings[f"zodiac_bg_{i}"]}; fill-opacity: 0.5;',
+                    f'fill: {self.chart_colors_settings[f"zodiac_bg_{i}"]}; fill-opacity: 0;',
                     self.zodiac[i]["name"],
                 )
             )
@@ -490,7 +490,7 @@ class KerykeionChartSVG:
             xtext = sliceToX(0, (r - dropin), text_offset) + dropin  # was 132
             ytext = sliceToY(0, (r - dropin), text_offset) + dropin  # was 132
             path = f'{path}<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {linecolor}; stroke-width: 2px; stroke-dasharray:3,2; stroke-opacity:.4;"/>'
-            path = path + '<text style="fill: #f00; fill-opacity: .6; font-size: 14px"><tspan x="' + str(xtext - 3) + '" y="' + str(ytext + 3) + '">' + str(i + 1) + "</tspan></text>"
+            path = path + '<text style="fill: #fff; fill-opacity: .6; font-size: 14px"><tspan x="' + str(xtext - 3) + '" y="' + str(ytext + 3) + '">' + str(i + 1) + "</tspan></text>"
 
         return path
 
@@ -1344,11 +1344,11 @@ class KerykeionChartSVG:
         # bottom left
         td["bottomLeft1"] = ""
         td["bottomLeft2"] = ""
-        td["bottomLeft3"] = f'{self.language_settings.get("lunar_phase", "Lunar Phase")}: {self.language_settings.get("day", "Day")} {self.user.lunar_phase.get("moon_phase", "")}'
+        td["bottomLeft3"] = "" #f'{self.language_settings.get("lunar_phase", "Lunar Phase")}: {self.language_settings.get("day", "Day")} {self.user.lunar_phase.get("moon_phase", "")}'
         td["bottomLeft4"] = ""
 
         # lunar phase
-        deg = self.user.lunar_phase["degrees_between_s_m"]
+        deg = ""#self.user.lunar_phase["degrees_between_s_m"]
 
         lffg = None
         lfbg = None
