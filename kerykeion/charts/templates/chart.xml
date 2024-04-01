@@ -16,7 +16,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
     <g transform="translate($cfgTranslate)">
         <g transform="rotate($cfgRotate)">
             <g transform="scale($cfgZoom)">
-                <rect x="0" y="0" width="$chart_width" height="546.0" style="fill: $paper_color_1" />
+                <rect x="0" y="0" width="100%" height="100%" style="fill: gray" />
                 <text x="20" y="30" style="fill: $paper_color_0; font-size: 24px">$stringTitle</text>
                 <text x="20" y="50" style="fill: $paper_color_0; font-size: 11px">$stringName</text>
                 <text x="20" y="62" style="fill: $paper_color_0; font-size: 11px">$stringLocation</text>
