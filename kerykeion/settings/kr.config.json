@@ -507,11 +507,11 @@
     "zodiac_transit_ring_1": "#FFFF00",
     "zodiac_transit_ring_2": "#FFFF00",
     "zodiac_transit_ring_3": "#FFFF00",
-    "houses_radix_line": "#FFFF00",
-    "houses_transit_line": "#FFFF00",
-    "lunar_phase_0": "#000000",
+    "houses_radix_line": "#FFFFFF",
+    "houses_transit_line": "#FFFFFF",
+    "lunar_phase_0": "#FFFFFF",
     "lunar_phase_1": "#FFFFFF",
-    "lunar_phase_2": "#CCCCCC"
+    "lunar_phase_2": "#FFFFFF"
   },
   "general_settings": {
     "axes_orbit": 1,
@@ -521,5 +521,5 @@
   "chart_settings": {
     "basic_chart_viewBox": "0 0 595.28 841.72592",
     "wide_chart_viewBox": "0 0 1060 841.72592"
-  }
+}
 }
