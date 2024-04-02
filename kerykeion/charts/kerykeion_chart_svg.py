@@ -655,12 +655,13 @@ class KerykeionChartSVG:
                     rplanet = 130
                     switch = 1
             else:
+                #aca ajusté el radio de los planets
                 # if 22 < i < 27 it is asc,mc,dsc,ic (angles of chart)
                 # put on special line (rplanet is range from outer ring)
                 amin, bmin, cmin = 0, 0, 0
                 if self.chart_type == "ExternalNatal":
-                    amin = 74 - 10
-                    bmin = 94 - 10
+                    amin = -30
+                    bmin = -10
                     cmin = 40 - 10
 
                 if 22 < i < 27:
