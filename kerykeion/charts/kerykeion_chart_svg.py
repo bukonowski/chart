@@ -388,7 +388,7 @@ class KerykeionChartSVG:
         if self.chart_type == "Transit" or self.chart_type == "Synastry":
             dropin = 54
         else:
-            dropin =self.c1 -18
+            dropin =self.c1 -30
         sign = f'<g transform="translate(-16,-16)"><use x="{str(dropin + sliceToX(num, r - dropin, offset))}" y="{str(dropin + sliceToY(num, r - dropin, offset))}" xlink:href="#{type}" /></g>'
 
         return slice + "" + sign
@@ -477,15 +477,15 @@ class KerykeionChartSVG:
                     path = path + '<text style="fill: #00f; fill-opacity: .4; font-size: 14px"><tspan x="' + str(xtext - 3) + '" y="' + str(ytext + 3) + '">' + str(i + 1) + "</tspan></text>"
                     path = f"{path}<line x1='{str(t_x1)}' y1='{str(t_y1)}' x2='{str(t_x2)}' y2='{str(t_y2)}' style='stroke: {t_linecolor}; stroke-width: 2px; stroke-opacity:.3;'/>"
 
-
+            #Radio de las houses
             # if transit
             if self.chart_type == "Transit" or self.chart_type == "Synastry":
-                dropin = 84
+                dropin = self.c1 + 10
             elif self.chart_type == "ExternalNatal":
-                dropin = 100
+                dropin = self.c1 + 10
             # Natal
             else:
-                dropin = self.c2
+                dropin = self.c1 + 10
 
             xtext = sliceToX(0, (r - dropin), text_offset) + dropin  # was 132
             ytext = sliceToY(0, (r - dropin), text_offset) + dropin  # was 132
@@ -655,12 +655,13 @@ class KerykeionChartSVG:
                     rplanet = 130
                     switch = 1
             else:
+                #aca ajusté el radio de los planets
                 # if 22 < i < 27 it is asc,mc,dsc,ic (angles of chart)
                 # put on special line (rplanet is range from outer ring)
                 amin, bmin, cmin = 0, 0, 0
                 if self.chart_type == "ExternalNatal":
-                    amin = 74 - 10
-                    bmin = 94 - 10
+                    amin = -30
+                    bmin = -10
                     cmin = 40 - 10
 
                 if 22 < i < 27:
