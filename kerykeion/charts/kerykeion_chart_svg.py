@@ -388,7 +388,7 @@ class KerykeionChartSVG:
         if self.chart_type == "Transit" or self.chart_type == "Synastry":
             dropin = 54
         else:
-            dropin =self.c1 -18
+            dropin =self.c1 -30
         sign = f'<g transform="translate(-16,-16)"><use x="{str(dropin + sliceToX(num, r - dropin, offset))}" y="{str(dropin + sliceToY(num, r - dropin, offset))}" xlink:href="#{type}" /></g>'
 
         return slice + "" + sign
