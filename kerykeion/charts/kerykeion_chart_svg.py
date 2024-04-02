@@ -368,7 +368,7 @@ class KerykeionChartSVG:
         offset = (int(self.user.houses_degree_ut[6]) / -1) + int(degB)
         x2 = sliceToX(0, ar, offset) + (r - ar)
         y2 = sliceToY(0, ar, offset) + (r - ar)
-        out = f'            <line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {color}; stroke-width: 1; stroke-opacity: .9;"/>'
+        out = f'            <line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {color}; stroke-width: 0.7; stroke-opacity: 1;"/>'
 
         return out
 
@@ -471,11 +471,11 @@ class KerykeionChartSVG:
 
                 if self.chart_type == "Transit":
                     path = path + '<text style="fill: #00f; fill-opacity: 0; font-size: 14px"><tspan x="' + str(xtext - 3) + '" y="' + str(ytext + 3) + '">' + str(i + 1) + "</tspan></text>"
-                    path = f"{path}<line x1='{str(t_x1)}' y1='{str(t_y1)}' x2='{str(t_x2)}' y2='{str(t_y2)}' style='stroke: {t_linecolor}; stroke-width: 2px; stroke-opacity:0;'/>"
+                    path = f"{path}<line x1='{str(t_x1)}' y1='{str(t_y1)}' x2='{str(t_x2)}' y2='{str(t_y2)}' style='stroke: {t_linecolor}; stroke-width: 2px; stroke-opacity:1;'/>"
 
                 else:
-                    path = path + '<text style="fill: #00f; fill-opacity: .4; font-size: 14px"><tspan x="' + str(xtext - 3) + '" y="' + str(ytext + 3) + '">' + str(i + 1) + "</tspan></text>"
-                    path = f"{path}<line x1='{str(t_x1)}' y1='{str(t_y1)}' x2='{str(t_x2)}' y2='{str(t_y2)}' style='stroke: {t_linecolor}; stroke-width: 2px; stroke-opacity:.3;'/>"
+                    path = path + '<text style="fill: #0f0; fill-opacity: .4; font-size: 14px"><tspan x="' + str(xtext - 3) + '" y="' + str(ytext + 3) + '">' + str(i + 1) + "</tspan></text>"
+                    path = f"{path}<line x1='{str(t_x1)}' y1='{str(t_y1)}' x2='{str(t_x2)}' y2='{str(t_y2)}' style='stroke: {t_linecolor}; stroke-width: 2px; stroke-opacity:1;'/>"
 
             #Radio de las houses
             # if transit
@@ -485,12 +485,12 @@ class KerykeionChartSVG:
                 dropin = self.c1 + 10
             # Natal
             else:
-                dropin = self.c1 + 10
-
+                dropin = self.c2 -2
             xtext = sliceToX(0, (r - dropin), text_offset) + dropin  # was 132
             ytext = sliceToY(0, (r - dropin), text_offset) + dropin  # was 132
-            path = f'{path}<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {linecolor}; stroke-width: 2px; stroke-dasharray:3,2; stroke-opacity:.4;"/>'
-            path = path + '<text style="fill: #fff; fill-opacity: .6; font-size: 14px"><tspan x="' + str(xtext - 3) + '" y="' + str(ytext + 3) + '">' + str(i + 1) + "</tspan></text>"
+            path = f'{path}<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {linecolor}; stroke-width: 2px; stroke-dasharray:3,2; stroke-opacity:1;"/>'
+            path = path + f'<circle cx="{xtext}" cy="{ytext}" r="6" fill="#fff" opacity="1"/>'
+            path = path + f'<text style="fill:#1d2c56; fill-opacity: 1; font-size: 8px" x="{xtext}" y="{ytext}" dominant-baseline="middle" text-anchor="middle">{i + 1}</text>'
 
         return path
 
