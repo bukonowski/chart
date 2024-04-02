@@ -314,7 +314,7 @@ class KerykeionChartSVG:
         deg = int(coord)
         min = int((float(coord) - deg) * 60)
         sec = int(round(float(((float(coord) - deg) * 60) - min) * 60.0))
-        return f"{deg}°{min}'{sec}\" {sign}"
+        return f"{deg}{(sign[0]).lower()}{min} "
 
     def _lon2str(self, coord):
         """Converts a floating point longitude to string with
@@ -335,7 +335,7 @@ class KerykeionChartSVG:
         deg = int(coord)
         min = int((float(coord) - deg) * 60)
         sec = int(round(float(((float(coord) - deg) * 60) - min) * 60.0))
-        return f"{deg}°{min}'{sec}\" {sign}"
+        return f"{deg}{(sign[0]).lower()}{min}"
 
     def _dec2deg(self, dec, type="3"):
         """Coverts decimal float to degrees in format
@@ -1413,16 +1413,16 @@ class KerykeionChartSVG:
         else:
             td["stringLocation"] = self.location
 
-        td["stringDateTime"] = f"{self.user.year}-{self.user.month}-{self.user.day} {self.user.hour:02d}:{self.user.minute:02d}"
+        td["stringDateTime"] = f"{self.user.day} {self.user.month} {self.user.year} · {self.user.hour:02d}:{self.user.minute:02d}"
 
         if self.chart_type == "Synastry":
             td["stringLat"] = f"{self.t_user.name}: "
             td["stringLon"] = self.t_user.city
-            td["stringPosition"] = f"{self.t_user.year}-{self.t_user.month}-{self.t_user.day} {self.t_user.hour:02d}:{self.t_user.minute:02d}"
+            td["stringPosition"] = f"{self.t_user.day} {self.t_user.month} {self.t_user.year} {self.t_user.hour:02d}:{self.t_user.minute:02d}"
 
         else:
-            td["stringLat"] = f"{self.language_settings['latitude']}: {self._lat2str(self.geolat)}"
-            td["stringLon"] = f"{self.language_settings['longitude']}: {self._lon2str(self.geolon)}"
+            td["stringLat"] = f"{self._lat2str(self.geolat)}"
+            td["stringLon"] = f"{self._lon2str(self.geolon)}"
             td["stringPosition"] = f"{self.language_settings['type']}: {self.charttype}"
 
         # paper_color_X
@@ -1491,9 +1491,8 @@ if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
     setup_logging(level="debug")
 
-    first = AstrologicalSubject("John Lennon", 1940, 10, 9, 10, 30, "Liverpool", "GB")
-    second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Liverpool", "GB")
-
+    first = AstrologicalSubject("Rahim", 1945, 10, 10, 10, 30, "Berlin", "DE")
+    second = AstrologicalSubject("Rahim", 1945, 10, 10, 10, 30, "Berlin", "DE")
     # Internal Natal Chart
     internal_natal_chart = KerykeionChartSVG(first)
     internal_natal_chart.makeSVG()
