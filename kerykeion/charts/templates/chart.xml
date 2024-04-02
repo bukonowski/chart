@@ -14,9 +14,12 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
             
     <g transform="translate($cfgTranslate)">
         <g transform="rotate($cfgRotate)">
+
             <g transform="scale($cfgZoom)">
                 <!---Rectangulo para ver espacio del svg-->
-                <rect x="0" y="0" width="100%" height="100%" style="fill: #1d2c56" />
+                <image x="0" y="0" width="595.28" height="100%" xlink:href="https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg "  preserveAspectRatio="none"/>
+
+                <rect x="0" y="0" width="100%" height="100%" style="fill: #1d2c56;fill-opacity: 0.5" />
                 <g transform="translate(200,500)">
                     <text x="20" y="30" style="fill: $paper_color_0; font-size: 24px">$stringTitle</text>
                     <text x="20" y="62" style="fill: $paper_color_0; font-size: 11px">$stringLocation</text>
@@ -467,7 +470,8 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                         <!-- Second Circle -->
                         <circle $c2 style="$c2style" />
                         <!-- Third Circle -->
-                        <circle $c3 style="$c3style" />
+                        <circle $c3 style="$c3style;" />
+
                         <!-- TransitRing -->
                         $transitRing
                         <!-- Degree Ring -->
