@@ -477,15 +477,15 @@ class KerykeionChartSVG:
                     path = path + '<text style="fill: #00f; fill-opacity: .4; font-size: 14px"><tspan x="' + str(xtext - 3) + '" y="' + str(ytext + 3) + '">' + str(i + 1) + "</tspan></text>"
                     path = f"{path}<line x1='{str(t_x1)}' y1='{str(t_y1)}' x2='{str(t_x2)}' y2='{str(t_y2)}' style='stroke: {t_linecolor}; stroke-width: 2px; stroke-opacity:.3;'/>"
 
-
+            #Radio de las houses
             # if transit
             if self.chart_type == "Transit" or self.chart_type == "Synastry":
-                dropin = 84
+                dropin = self.c1 + 10
             elif self.chart_type == "ExternalNatal":
-                dropin = 100
+                dropin = self.c1 + 10
             # Natal
             else:
-                dropin = self.c2
+                dropin = self.c1 + 10
 
             xtext = sliceToX(0, (r - dropin), text_offset) + dropin  # was 132
             ytext = sliceToY(0, (r - dropin), text_offset) + dropin  # was 132
