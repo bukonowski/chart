@@ -270,12 +270,12 @@ class KerykeionChartSVG:
                 offset = offset + 360.0
             elif offset > 360:
                 offset = offset - 360.0
-            x1 = sliceToX(0, r - self.c1, offset) + self.c1
-            y1 = sliceToY(0, r - self.c1, offset) + self.c1
-            x2 = sliceToX(0, r + 2 - self.c1, offset) - 2 + self.c1
-            y2 = sliceToY(0, r + 2 - self.c1, offset) - 2 + self.c1
+            x1 = sliceToX(0, r - self.c2, offset) + self.c2
+            y1 = sliceToY(0, r - self.c2, offset) + self.c2 
+            x2 = sliceToX(0, r + 2 - self.c2, offset) - 2 + self.c2
+            y2 = sliceToY(0, r + 2 - self.c2, offset) - 2 + self.c2
 
-            out += f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {self.chart_colors_settings["paper_0"]}; stroke-width: 1px; stroke-opacity:.9;"/>'
+            out += f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke:{self.chart_colors_settings["paper_0"]}; stroke-width: 2px; stroke-opacity:1;"/>'
 
         return out
 
@@ -379,7 +379,7 @@ class KerykeionChartSVG:
         if self.chart_type == "Transit" or self.chart_type == "Synastry":
             dropin = 0
         else:
-            dropin = self.c1
+            dropin = self.c1 
         slice = f'<path d="M{str(r)},{str(r)} L{str(dropin + sliceToX(num, r - dropin, offset))},{str(dropin + sliceToY(num, r - dropin, offset))} A{str(r - dropin)},{str(r - dropin)} 0 0,0 {str(dropin + sliceToX(num + 1, r - dropin, offset))},{str(dropin + sliceToY(num + 1, r - dropin, offset))} z" style="{style}"/>'
 
         # symbols
@@ -388,7 +388,7 @@ class KerykeionChartSVG:
         if self.chart_type == "Transit" or self.chart_type == "Synastry":
             dropin = 54
         else:
-            dropin = 18 + self.c1
+            dropin =self.c1 -18
         sign = f'<g transform="translate(-16,-16)"><use x="{str(dropin + sliceToX(num, r - dropin, offset))}" y="{str(dropin + sliceToY(num, r - dropin, offset))}" xlink:href="#{type}" /></g>'
 
         return slice + "" + sign
@@ -418,8 +418,8 @@ class KerykeionChartSVG:
                 roff = 72
                 t_roff = 36
             else:
-                dropin = self.c3
-                roff = self.c1
+                dropin = self.c1 
+                roff = self.c1 
 
             # offset is negative desc houses_degree_ut[6]
             offset = (int(self.user.houses_degree_ut[int(xr / 2)]) / -1) + int(self.user.houses_degree_ut[i])
@@ -485,7 +485,7 @@ class KerykeionChartSVG:
                 dropin = 100
             # Natal
             else:
-                dropin = 48
+                dropin = self.c2
 
             xtext = sliceToX(0, (r - dropin), text_offset) + dropin  # was 132
             ytext = sliceToY(0, (r - dropin), text_offset) + dropin  # was 132
@@ -1282,9 +1282,9 @@ class KerykeionChartSVG:
             self.c2 = 92
             self.c3 = 112
         else:
-            self.c1 = 0
+            self.c1 = 12
             self.c2 = 36
-            self.c3 = 120
+            self.c3 = 72
 
         # transit
         if self.chart_type == "Transit" or self.chart_type == "Synastry":
