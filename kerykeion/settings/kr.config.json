@@ -215,7 +215,7 @@
       "is_major": 1,
       "is_minor": 0,
       "orb": 10,
-      "color": "#FFFFFF"
+      "color": "#d7db92"
     },
     {
       "degree": 30,
@@ -225,7 +225,7 @@
       "is_major": 0,
       "is_minor": 1,
       "orb": 1,
-      "color": "#FFFFFF"
+      "color": "#d7db92"
     },
     {
       "degree": 45,
@@ -235,7 +235,7 @@
       "is_major": 0,
       "is_minor": 1,
       "orb": 1,
-      "color": "#FFFFFF"
+      "color": "#d7db92"
     },
     {
       "degree": 60,
@@ -245,7 +245,7 @@
       "is_major": 1,
       "is_minor": 0,
       "orb": 6,
-      "color": "#FFFFFF"
+      "color": "#d7db92"
     },
     {
       "degree": 72,
@@ -255,7 +255,7 @@
       "is_major": 0,
       "is_minor": 1,
       "orb": 1,
-      "color": "#FFFFFF"
+      "color": "#d7db92"
     },
     {
       "degree": 90,
@@ -265,7 +265,7 @@
       "is_major": 1,
       "is_minor": 0,
       "orb": 5,
-      "color": "#FFFFFF"
+      "color": "#d7db92"
     },
     {
       "degree": 120,
@@ -275,7 +275,7 @@
       "is_major": 1,
       "is_minor": 0,
       "orb": 8,
-      "color": "#FFFFFF"
+      "color": "#d7db92"
     },
     {
       "degree": 135,
@@ -285,7 +285,7 @@
       "is_major": 0,
       "is_minor": 1,
       "orb": 1,
-      "color": "#FFFFFF"
+      "color": "#d7db92"
     },
     {
       "degree": 144,
@@ -295,7 +295,7 @@
       "is_major": 0,
       "is_minor": 1,
       "orb": 1,
-      "color": "#FFFFFF"
+      "color": "#d7db92"
     },
     {
       "degree": 150,
@@ -305,7 +305,7 @@
       "is_major": 0,
       "is_minor": 0,
       "orb": 1,
-      "color": "#FFFFFF"
+      "color": "#d7db92"
     },
     {
       "degree": 180,
@@ -315,7 +315,7 @@
       "is_major": 1,
       "is_minor": 0,
       "orb": 10,
-      "color": "#FFFFFF"
+      "color": "#d7db92"
     }
   ],
   "celestial_points": [

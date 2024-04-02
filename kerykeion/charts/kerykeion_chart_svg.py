@@ -264,25 +264,25 @@ class KerykeionChartSVG:
         Draws the degree ring.
         """
         out = ""
-        for i in range(72):
-            offset = float(i * 5) - self.user.houses_degree_ut[6]
+        for i in range(360):
+            offset = float(i*2) - self.user.houses_degree_ut[6]
             if offset < 0:
                 offset = offset + 360.0
             elif offset > 360:
                 offset = offset - 360.0
-            x1 = sliceToX(0, r - self.c2, offset) + self.c2
-            y1 = sliceToY(0, r - self.c2, offset) + self.c2 
-            x2 = sliceToX(0, r + 2 - self.c2, offset) - 2 + self.c2
-            y2 = sliceToY(0, r + 2 - self.c2, offset) - 2 + self.c2
+            x1 = sliceToX(0, r- 4  - self.c2, offset) +4+ self.c2
+            y1 = sliceToY(0, r- 4 - self.c2, offset) +4+ self.c2 
+            x2 = sliceToX(0, r + 4 - self.c2, offset) - 4 + self.c2
+            y2 = sliceToY(0, r + 4 - self.c2, offset) - 4 + self.c2
 
-            out += f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke:{self.chart_colors_settings["paper_0"]}; stroke-width: 2px; stroke-opacity:1;"/>'
+            out += f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke:{self.chart_colors_settings["paper_0"]}; stroke-width: 1px; stroke-opacity:1;"/>'
 
         return out
 
     def _degreeTransitRing(self, r):
         out = ""
-        for i in range(72):
-            offset = float(i * 5) - self.user.houses_degree_ut[6]
+        for i in range(360):
+            offset = float(i*2) - self.user.houses_degree_ut[6]
             if offset < 0:
                 offset = offset + 360.0
             elif offset > 360:
