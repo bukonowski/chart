@@ -270,13 +270,22 @@ class KerykeionChartSVG:
                 offset = offset + 360.0
             elif offset > 360:
                 offset = offset - 360.0
-            x1 = sliceToX(0, r- 4  - self.c2, offset) +4+ self.c2
-            y1 = sliceToY(0, r- 4 - self.c2, offset) +4+ self.c2 
-            x2 = sliceToX(0, r + 4 - self.c2, offset) - 4 + self.c2
-            y2 = sliceToY(0, r + 4 - self.c2, offset) - 4 + self.c2
+                
+            rad_1=30    #Con esto modifiquo el radio
+            x1 = sliceToX(0, r- 4  - (self.c1+rad_1), offset) +4+ (self.c1+rad_1)
+            y1 = sliceToY(0, r- 4 - (self.c1+rad_1), offset) +4+ (self.c1+rad_1)
+            x2 = sliceToX(0, r + 4 - (self.c1+rad_1), offset) - 4 + (self.c1+rad_1)
+            y2 = sliceToY(0, r + 4 - (self.c1+rad_1), offset) - 4 + (self.c1+rad_1)
 
             out += f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke:{self.chart_colors_settings["paper_0"]}; stroke-width: 1px; stroke-opacity:1;"/>'
-
+            
+            rad2=10     #Con esto modifiquo el radio
+            x1b = sliceToX(0, r- 4  - (self.c1+rad2), offset) +4+ (self.c1+rad2)
+            y1b = sliceToY(0, r- 4 - (self.c1+rad2), offset) +4+ (self.c1+rad2)
+            x2b = sliceToX(0, r + 4 - (self.c1+rad2), offset) - 4 + (self.c1+rad2)
+            y2b = sliceToY(0, r + 4 - (self.c1+rad2), offset) - 4 + (self.c1+rad2)
+            
+            out += f'<line x1="{x1b}" y1="{y1b}" x2="{x2b}" y2="{y2b}" style="stroke:{self.chart_colors_settings["paper_0"]}; stroke-width: 1px; stroke-opacity:1;"/>'
         return out
 
     def _degreeTransitRing(self, r):
