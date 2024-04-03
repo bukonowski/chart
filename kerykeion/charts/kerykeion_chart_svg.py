@@ -491,7 +491,7 @@ class KerykeionChartSVG:
             if self.chart_type == "Transit" or self.chart_type == "Synastry":
                 dropin = self.c1 + 10
             elif self.chart_type == "ExternalNatal":
-                dropin = self.c1 + 10
+                dropin = self.c1 + 20
             # Natal
             else:
                 dropin = self.c2 -2
