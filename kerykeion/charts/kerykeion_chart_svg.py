@@ -264,13 +264,13 @@ class KerykeionChartSVG:
         Draws the degree ring.
         """
         out = ""
-        for i in range(360):
+        for i in range(180):
             offset = float(i*2) - self.user.houses_degree_ut[6]
             if offset < 0:
                 offset = offset + 360.0
             elif offset > 360:
                 offset = offset - 360.0
-                
+            #anillo interno
             rad_1=30    #Con esto modifiquo el radio
             x1 = sliceToX(0, r- 4  - (self.c1+rad_1), offset) +4+ (self.c1+rad_1)
             y1 = sliceToY(0, r- 4 - (self.c1+rad_1), offset) +4+ (self.c1+rad_1)
@@ -279,6 +279,7 @@ class KerykeionChartSVG:
 
             out += f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke:{self.chart_colors_settings["paper_0"]}; stroke-width: 1px; stroke-opacity:1;"/>'
             
+            #anillo externo
             rad2=10     #Con esto modifiquo el radio
             x1b = sliceToX(0, r- 4  - (self.c1+rad2), offset) +4+ (self.c1+rad2)
             y1b = sliceToY(0, r- 4 - (self.c1+rad2), offset) +4+ (self.c1+rad2)
