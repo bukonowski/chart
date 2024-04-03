@@ -1519,3 +1519,10 @@ if __name__ == "__main__":
     # Transits Chart
     transits_chart = KerykeionChartSVG(first, "Transit", second)
     transits_chart.makeSVG()
+
+    #testeos de theme
+    Juancito =  AstrologicalSubject("Juancito", 2003, 8, 8, 8, 30, "Berlin", "DE")
+    bright = Path("bright.json")
+    
+    external_natal_chart2 = KerykeionChartSVG(Juancito, "ExternalNatal", second, None, bright)
+    external_natal_chart2.makeSVG()
