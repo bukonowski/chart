@@ -650,7 +650,7 @@ class KerykeionChartSVG:
                     for f in range(xl - 1):
                         planets_delta[groups[a][(f + 1)][0]] = 1.2 * planet_drange + planets_delta[groups[a][f][0]] - groups[a][f][2]
 
-        for e in range(len(keys)):
+        for e in range(len(keys)): #aca se colocan los dimbolos de los planets
             i = planets_degut[keys[e]]
 
             # coordinates
@@ -669,9 +669,9 @@ class KerykeionChartSVG:
                 # put on special line (rplanet is range from outer ring)
                 amin, bmin, cmin = 0, 0, 0
                 if self.chart_type == "ExternalNatal":
-                    amin = -30
-                    bmin = -10
-                    cmin = 40 - 10
+                    amin = -28 #-28
+                    bmin = -10 #-10
+                    cmin = 30  #30
 
                 if 22 < i < 27:
                     rplanet = 40 - cmin
@@ -693,26 +693,26 @@ class KerykeionChartSVG:
                 scale = 0.8
                 
             elif self.chart_type == "ExternalNatal":
-                scale = 0.8
-                # line1
+                scale = 0.6
+                # line1 (interna)
                 x1 = sliceToX(0, (r - self.c3), trueoffset) + self.c3
                 y1 = sliceToY(0, (r - self.c3), trueoffset) + self.c3
                 x2 = sliceToX(0, (r - rplanet - 30), trueoffset) + rplanet + 30
                 y2 = sliceToY(0, (r - rplanet - 30), trueoffset) + rplanet + 30
                 color = self.available_planets_setting[i]["color"]
-                output += (
-                    '<line x1="%s" y1="%s" x2="%s" y2="%s" style="stroke-width:1px;stroke:%s;stroke-opacity:.3;"/>\n'
-                    % (x1, y1, x2, y2, color)
-                )
-                # line2
+                #output += (
+                #    '<line x1="%s" y1="%s" x2="%s" y2="%s" style="stroke-width:1px;stroke:%s;stroke-opacity:.3;"/>\n'
+                #    % (x1, y1, x2, y2, color)
+                #)
+                # line2 (externa)
                 x1 = sliceToX(0, (r - rplanet - 30), trueoffset) + rplanet + 30
                 y1 = sliceToY(0, (r - rplanet - 30), trueoffset) + rplanet + 30
                 x2 = sliceToX(0, (r - rplanet - 10), offset) + rplanet + 10
                 y2 = sliceToY(0, (r - rplanet - 10), offset) + rplanet + 10
-                output += (
-                    '<line x1="%s" y1="%s" x2="%s" y2="%s" style="stroke-width:1px;stroke:%s;stroke-opacity:.5;"/>\n'
-                    % (x1, y1, x2, y2, color)
-                )
+                #output += (
+                #    '<line x1="%s" y1="%s" x2="%s" y2="%s" style="stroke-width:1px;stroke:%s;stroke-opacity:.5;"/>\n'
+                #    % (x1, y1, x2, y2, color)
+                #)
                 
             else:
                 scale = 1
