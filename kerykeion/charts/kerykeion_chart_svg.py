@@ -1323,6 +1323,7 @@ class KerykeionChartSVG:
 
         # transit
         if self.chart_type == "Transit" or self.chart_type == "Synastry":
+            td["font"] = self.font
             td["transitRing"] = self._transitRing(r)
             td["degreeRing"] = self._degreeTransitRing(r)
 
@@ -1554,6 +1555,7 @@ if __name__ == "__main__":
     external_natal_chart2 = KerykeionChartSVG(Juancito, "ExternalNatal", second, None, dark)
     external_natal_chart2.makeSVG()
         
-    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, bright, "calibri")
+    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, dark, "calibrii")
     external_natal_chart3.makeSVG()
+    print(external_natal_chart3.font)
 
