@@ -6,6 +6,7 @@
 
 import pytz
 import logging
+from matplotlib import font_manager
 
 from datetime import datetime
 from kerykeion.settings.kerykeion_settings import get_settings
@@ -32,6 +33,7 @@ class KerykeionChartSVG:
         - new_output_directory: Set the output directory (default: output_directory)
         - lang: language settings (default: "EN")
         - new_settings_file: Set the settings file (default: kr.config.json)
+        - font: Set the font style (default: arialbd)
     """
 
     first_obj: AstrologicalSubject
@@ -40,6 +42,7 @@ class KerykeionChartSVG:
     new_output_directory: Union[Path, None]
     new_settings_file: Union[Path, None]
     output_directory: Path
+    new_font_name: Union[str, None]
 
     def __init__(
         self,
@@ -48,12 +51,20 @@ class KerykeionChartSVG:
         second_obj: Union[AstrologicalSubject, None] = None,
         new_output_directory: Union[str, None] = None,
         new_settings_file: Union[Path, None] = None,
+        new_font_name: Union[str, None] = None,
     ):
         # Directories:
         DATA_DIR = Path(__file__).parent
         self.homedir = Path.home()
         self.new_settings_file = new_settings_file
 
+        #Font:
+        if new_font_name is not None:
+            self.font = self.get_font(new_font_name)
+        else:
+            self.font = "arialbd.ttf"
+        
+        # new output directory
         if new_output_directory:
             self.output_directory = Path(new_output_directory)
         else:
@@ -227,6 +238,19 @@ class KerykeionChartSVG:
         # Immediately generate template.
         self.template = self.makeTemplate()
 
+    def get_font(self, font_name):
+        """
+        receives the name of an installed font and returns its path
+        """
+        installed_fonts = font_manager.findSystemFonts()
+        
+        for font_dir in installed_fonts:
+            if font_name.lower() in font_dir.lower():
+                return font_dir
+        
+        print(f"Font {font_name} not found")
+        return "arialbd.ttf"
+    
     def set_output_directory(self, dir_path: Path) -> None:
         """
         Sets the output direcotry and returns it's path.
@@ -1316,6 +1340,7 @@ class KerykeionChartSVG:
             td["makePatterns"] = ""
             td["chart_width"] = self.full_width
         else:
+            td["font"] = self.font
             td["transitRing"] = ""
             td["degreeRing"] = self._degreeRing(r)
 
@@ -1529,6 +1554,6 @@ if __name__ == "__main__":
     external_natal_chart2 = KerykeionChartSVG(Juancito, "ExternalNatal", second, None, dark)
     external_natal_chart2.makeSVG()
         
-    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, bright)
+    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, bright, "calibri")
     external_natal_chart3.makeSVG()
 
