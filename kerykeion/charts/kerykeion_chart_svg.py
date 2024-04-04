@@ -1522,7 +1522,13 @@ if __name__ == "__main__":
 
     #testeos de theme
     Juancito =  AstrologicalSubject("Juancito", 2003, 8, 8, 8, 30, "Berlin", "DE")
+    Juancito2 =  AstrologicalSubject("Juancito2", 2003, 8, 8, 8, 30, "Berlin", "DE")
     bright = Path("bright.json")
+    dark = Path("dark.json")
     
-    external_natal_chart2 = KerykeionChartSVG(Juancito, "ExternalNatal", second, None, bright)
+    external_natal_chart2 = KerykeionChartSVG(Juancito, "ExternalNatal", second, None, dark)
     external_natal_chart2.makeSVG()
+        
+    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, bright)
+    external_natal_chart3.makeSVG()
+

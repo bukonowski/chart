@@ -215,7 +215,7 @@
         "is_major": 1,
         "is_minor": 0,
         "orb": 10,
-        "color": "#1d2c56"
+        "color": "#d7db92"
       },
       {
         "degree": 30,
@@ -225,7 +225,7 @@
         "is_major": 0,
         "is_minor": 1,
         "orb": 1,
-        "color": "#1d2c56"
+        "color": "#d7db92"
       },
       {
         "degree": 45,
@@ -235,7 +235,7 @@
         "is_major": 0,
         "is_minor": 1,
         "orb": 1,
-        "color": "#1d2c56"
+        "color": "#d7db92"
       },
       {
         "degree": 60,
@@ -245,7 +245,7 @@
         "is_major": 1,
         "is_minor": 0,
         "orb": 6,
-        "color": "#1d2c56"
+        "color": "#d7db92"
       },
       {
         "degree": 72,
@@ -255,7 +255,7 @@
         "is_major": 0,
         "is_minor": 1,
         "orb": 1,
-        "color": "#1d2c56"
+        "color": "#d7db92"
       },
       {
         "degree": 90,
@@ -265,7 +265,7 @@
         "is_major": 1,
         "is_minor": 0,
         "orb": 5,
-        "color": "#1d2c56"
+        "color": "#d7db92"
       },
       {
         "degree": 120,
@@ -275,7 +275,7 @@
         "is_major": 1,
         "is_minor": 0,
         "orb": 8,
-        "color": "#1d2c56"
+        "color": "#d7db92"
       },
       {
         "degree": 135,
@@ -285,7 +285,7 @@
         "is_major": 0,
         "is_minor": 1,
         "orb": 1,
-        "color": "#1d2c56"
+        "color": "#d7db92"
       },
       {
         "degree": 144,
@@ -295,7 +295,7 @@
         "is_major": 0,
         "is_minor": 1,
         "orb": 1,
-        "color": "#1d2c56"
+        "color": "#d7db92"
       },
       {
         "degree": 150,
@@ -474,9 +474,9 @@
       }
     ],
     "chart_colors": {
-      "paper_0": "#ffffff",
+      "paper_0": "#1d2c56",
       "paper_1": "#ffffff",
-      "zodiac_bg_0": "ffffff",
+      "zodiac_bg_0": "transparent",
       "zodiac_bg_1": "transparent",
       "zodiac_bg_2": "transparent",
       "zodiac_bg_3": "transparent",
@@ -488,30 +488,30 @@
       "zodiac_bg_9": "transparent",
       "zodiac_bg_10": "transparent",
       "zodiac_bg_11": "transparent",
-      "zodiac_icon_0": "#ffffff",
-      "zodiac_icon_1": "#ffffff",
-      "zodiac_icon_2": "#ffffff",
-      "zodiac_icon_3": "#ffffff",
-      "zodiac_icon_4": "#ffffff",
-      "zodiac_icon_5": "#ffffff",
-      "zodiac_icon_6": "#ffffff",
-      "zodiac_icon_7": "#ffffff",
-      "zodiac_icon_8": "#ffffff",
-      "zodiac_icon_9": "#ffffff",
-      "zodiac_icon_10": "#ffffff",
-      "zodiac_icon_11": "#ffffff",
-      "zodiac_radix_ring_0": "#ffffff",
-      "zodiac_radix_ring_1": "#ffffff",
-      "zodiac_radix_ring_2": "#ffffff",
-      "zodiac_transit_ring_0": "#ffffff",
-      "zodiac_transit_ring_1": "#ffffff",
-      "zodiac_transit_ring_2": "#ffffff",
-      "zodiac_transit_ring_3": "#ffffff",
-      "houses_radix_line": "#ffffff",
-      "houses_transit_line": "#ffffff",
-      "lunar_phase_0": "#ffffff",
-      "lunar_phase_1": "#ffffff",
-      "lunar_phase_2": "#ffffff"
+      "zodiac_icon_0": "#1d2c56",
+      "zodiac_icon_1": "#1d2c56",
+      "zodiac_icon_2": "#1d2c56",
+      "zodiac_icon_3": "#1d2c56",
+      "zodiac_icon_4": "#1d2c56",
+      "zodiac_icon_5": "#1d2c56",
+      "zodiac_icon_6": "#1d2c56",
+      "zodiac_icon_7": "#1d2c56",
+      "zodiac_icon_8": "#1d2c56",
+      "zodiac_icon_9": "#1d2c56",
+      "zodiac_icon_10": "#1d2c56",
+      "zodiac_icon_11": "#1d2c56",
+      "zodiac_radix_ring_0": "#1d2c56",
+      "zodiac_radix_ring_1": "#1d2c56",
+      "zodiac_radix_ring_2": "#1d2c56",
+      "zodiac_transit_ring_0": "#1d2c56",
+      "zodiac_transit_ring_1": "#1d2c56",
+      "zodiac_transit_ring_2": "#1d2c56",
+      "zodiac_transit_ring_3": "#1d2c56",
+      "houses_radix_line": "#1d2c56",
+      "houses_transit_line": "#1d2c56",
+      "lunar_phase_0": "#1d2c56",
+      "lunar_phase_1": "#1d2c56",
+      "lunar_phase_2": "#1d2c56"
     },
     "general_settings": {
       "axes_orbit": 1,
