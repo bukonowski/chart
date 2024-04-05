@@ -33,7 +33,7 @@ class KerykeionChartSVG:
         - new_output_directory: Set the output directory (default: output_directory)
         - lang: language settings (default: "EN")
         - new_settings_file: Set the settings file (default: kr.config.json)
-        - font: Set the font style (default: arialbd)
+        - font: Set the font style (default: DejaVu Sans)
     """
 
     first_obj: AstrologicalSubject
@@ -62,7 +62,7 @@ class KerykeionChartSVG:
         if new_font_name is not None:
             self.font = self.get_font(new_font_name)
         else:
-            self.font = "arialbd.ttf"
+            self.font = "DejaVu Sans"
         
         # new output directory
         if new_output_directory:
@@ -238,18 +238,14 @@ class KerykeionChartSVG:
         # Immediately generate template.
         self.template = self.makeTemplate()
 
-    def get_font(self, font_name):
+    def get_font(self, new_font_name):
         """
-        receives the name of an installed font and returns its path
+        Sets the font and return it's name
         """
-        installed_fonts = font_manager.findSystemFonts()
-        
-        for font_dir in installed_fonts:
-            if font_name.lower() in font_dir.lower():
-                return font_dir
-        
-        print(f"Font {font_name} not found")
-        return "arialbd.ttf"
+        font_path = font_manager.findfont(font_manager.FontProperties(family=new_font_name))
+        font_props = font_manager.FontProperties(fname=font_path)
+        font_name = font_props.get_name()
+        return font_name
     
     def set_output_directory(self, dir_path: Path) -> None:
         """
@@ -1552,10 +1548,12 @@ if __name__ == "__main__":
     bright = Path("bright.json")
     dark = Path("dark.json")
     
-    external_natal_chart2 = KerykeionChartSVG(Juancito, "ExternalNatal", second, None, dark)
+    external_natal_chart2 = KerykeionChartSVG(Juancito, "ExternalNatal", second, None, dark, "Palatino Linotype")
     external_natal_chart2.makeSVG()
         
-    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, dark, "calibrii")
+    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, dark, "Symbol")
     external_natal_chart3.makeSVG()
-    print(external_natal_chart3.font)
+    
+#    print(external_natal_chart2.font)
+#    print(external_natal_chart3.font)
 
