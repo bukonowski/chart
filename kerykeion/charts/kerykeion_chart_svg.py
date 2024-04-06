@@ -671,7 +671,7 @@ class KerykeionChartSVG:
                     for f in range(xl - 1):
                         planets_delta[groups[a][(f + 1)][0]] = 1.2 * planet_drange + planets_delta[groups[a][f][0]] - groups[a][f][2]
 
-        for e in range(len(keys)): #aca se colocan los dimbolos de los planets
+        for e in range(len(keys)): #aca se colocan los simbolos de los planets
             i = planets_degut[keys[e]]
 
             # coordinates
@@ -692,6 +692,10 @@ class KerykeionChartSVG:
                 if self.chart_type == "ExternalNatal":
                     amin = -28 #-28
                     bmin = -10 #-10
+                    cmin = 30  #30
+                elif self.chart_type == "Natal":
+                    amin = 15 #15
+                    bmin = 34 #34
                     cmin = 30  #30
 
                 if 22 < i < 27:
@@ -736,7 +740,7 @@ class KerykeionChartSVG:
                 #)
                 
             else:
-                scale = 1
+                scale = 0.7
             # output planet
             output += f'<g transform="translate(-{12 * scale},-{12 * scale})"><g transform="scale({scale})"><use x="{planet_x * (1/scale)}" y="{planet_y * (1/scale)}" xlink:href="#{self.available_planets_setting[i]["name"]}" /></g></g>'
 
