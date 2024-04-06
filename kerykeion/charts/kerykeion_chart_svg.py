@@ -1161,8 +1161,8 @@ class KerykeionChartSVG:
         offset = 0
 
         out = '<g transform="translate(50,550)">' #Modificado
-        out += '<g transform="translate(100, -15)">' #Modificado
-        out += f'<text text-anchor="end" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 14px;">{self.language_settings["planets_and_house"]} {self.name}:</text>'
+        out += '<g transform="translate(80, -15)">' #Modificado
+        #out += f'<text text-anchor="end" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 14px;">{self.language_settings["planets_and_house"]} {self.name}:</text>'
         out += "</g>"
 
         end_of_line = None
@@ -1179,20 +1179,20 @@ class KerykeionChartSVG:
             out += f'<g transform="translate({offset},{li})">'
 
             # planet text
-            out += f'<text text-anchor="end" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 10px;">{self.language_settings["celestial_points"][self.available_planets_setting[i]["label"]]}</text>'
+            out += f'<text text-anchor="start" x="-20" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 10px;">{self.language_settings["celestial_points"][self.available_planets_setting[i]["label"]]}</text>'
 
             # planet symbol
-            out += f'<g transform="translate(5,-8)"><use transform="scale(0.4)" xlink:href="#{self.available_planets_setting[i]["name"]}" /></g>'
+            #out += f'<g transform="translate(35,-8)"><use transform="scale(0.4)" xlink:href="#{self.available_planets_setting[i]["name"]}" /></g>'
 
             # planet degree
-            out += f'<text text-anchor="start" x="19" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 10px;">{self._dec2deg(self.points_deg[i])}</text>'
+            out += f'<text text-anchor="start" x="35" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 10px;">{self._dec2deg(self.points_deg[i])}</text>'
 
             # zodiac
-            out += f'<g transform="translate(60,-8)"><use transform="scale(0.3)" xlink:href="#{self.zodiac[self.points_sign[i]]["name"]}" /></g>'
+            #out += f'<g transform="translate(95,-8)"><use transform="scale(0.3)" xlink:href="#{self.zodiac[self.points_sign[i]]["name"]}" /></g>'
 
             # planet retrograde
             if self.points_retrograde[i]:
-                out += '<g transform="translate(74,-6)"><use transform="scale(.5)" xlink:href="#retrograde" /></g>'
+                out += '<g transform="translate(80,-6)"><use transform="scale(.5)" xlink:href="#retrograde" /></g>'
 
             # end of line
             out += end_of_line
@@ -1202,10 +1202,10 @@ class KerykeionChartSVG:
         if self.chart_type == "Transit" or self.chart_type == "Synastry":
             if self.chart_type == "Transit":
                 out += '<g transform="translate(320, -15)">'
-                out += f'<text text-anchor="end" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 14px;">{self.t_name}:</text>'
+                out += f'<text text-anchor="start" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 14px;">{self.t_name}:</text>'
             else:
                 out += '<g transform="translate(380, -15)">'
-                out += f'<text text-anchor="end" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 14px;">{self.language_settings["planets_and_house"]} {self.t_user.name}:</text>'
+                out += f'<text text-anchor="start" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 14px;">{self.language_settings["planets_and_house"]} {self.t_user.name}:</text>'
 
             out += end_of_line
 
@@ -1222,7 +1222,7 @@ class KerykeionChartSVG:
                     out += f'<g transform="translate({t_offset},{t_li})">'
 
                     # planet text
-                    out += f'<text text-anchor="end" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 10px;">{self.language_settings["celestial_points"][self.available_planets_setting[i]["label"]]}</text>'
+                    out += f'<text text-anchor="start" style="fill:{self.chart_colors_settings["paper_0"]}; font-size: 10px;">{self.language_settings["celestial_points"][self.available_planets_setting[i]["label"]]}</text>'
                     # planet symbol
                     out += f'<g transform="translate(5,-8)"><use transform="scale(0.4)" xlink:href="#{self.available_planets_setting[i]["name"]}" /></g>'
                     # planet degree
