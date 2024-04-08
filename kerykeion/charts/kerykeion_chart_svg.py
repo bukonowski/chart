@@ -20,6 +20,8 @@ from pathlib import Path
 from string import Template
 from typing import Union
 
+bright = Path("bright.json")
+dark = Path("dark.json")
 
 class KerykeionChartSVG:
     """
@@ -34,6 +36,10 @@ class KerykeionChartSVG:
         - lang: language settings (default: "EN")
         - new_settings_file: Set the settings file (default: kr.config.json)
         - font: Set the font style (default: DejaVu Sans)
+        - new_bg_color: hexadecimal color
+        - new_bg_image: image URL
+        - new_bg_image_wheel: image URL
+        
     """
 
     first_obj: AstrologicalSubject
@@ -43,6 +49,9 @@ class KerykeionChartSVG:
     new_settings_file: Union[Path, None]
     output_directory: Path
     new_font_name: Union[str, None]
+    new_bg_color: Union[str, None]
+    new_bg_image: Union[str, None]
+    new_bg_image_wheel: Union[str, None]
 
     def __init__(
         self,
@@ -52,6 +61,9 @@ class KerykeionChartSVG:
         new_output_directory: Union[str, None] = None,
         new_settings_file: Union[Path, None] = None,
         new_font_name: Union[str, None] = None,
+        new_bg_color: Union[str, None] = None,
+        new_bg_image: Union[str, None] = None,
+        new_bg_image_wheel: Union[str, None] = None,
     ):
         # Directories:
         DATA_DIR = Path(__file__).parent
@@ -64,6 +76,20 @@ class KerykeionChartSVG:
         else:
             self.font = "DejaVu Sans"
         
+        #bg_color
+        if new_bg_color is not None:
+            self.bg_color = new_bg_color
+        else:
+            self.bg_color = None
+
+        #bg_image
+        if new_bg_image is not None:
+            self.bg_image = new_bg_image
+
+        #bg_image_wheel
+        if new_bg_image_wheel is not None:
+            self.bg_image_wheel = new_bg_image_wheel
+
         # new output directory
         if new_output_directory:
             self.output_directory = Path(new_output_directory)
@@ -1464,7 +1490,10 @@ class KerykeionChartSVG:
 
         # paper_color_X
         td["paper_color_0"] = self.chart_colors_settings["paper_0"]
-        td["paper_color_1"] = self.chart_colors_settings["paper_1"]
+        if self.bg_color is not None:
+            td["paper_color_1"] = self.bg_color
+        else:
+            td["paper_color_1"] = self.chart_colors_settings["paper_1"]
 
         # planets_color_X
         for i in range(len(self.planets_settings)):
@@ -1549,15 +1578,12 @@ if __name__ == "__main__":
     #testeos de theme
     Juancito =  AstrologicalSubject("Juancito", 2003, 8, 8, 8, 30, "Berlin", "DE")
     Juancito2 =  AstrologicalSubject("Juancito2", 2003, 8, 8, 8, 30, "Berlin", "DE")
-    bright = Path("bright.json")
-    dark = Path("dark.json")
     
     external_natal_chart2 = KerykeionChartSVG(Juancito, "ExternalNatal", second, None, dark, "Palatino Linotype")
     external_natal_chart2.makeSVG()
         
-    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, dark, "Symbol")
+    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, bright, "Symbol", None)
     external_natal_chart3.makeSVG()
     
 #    print(external_natal_chart2.font)
 #    print(external_natal_chart3.font)
-
