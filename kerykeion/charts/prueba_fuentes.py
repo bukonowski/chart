@@ -17,4 +17,4 @@ for x in fuentes_instaladas:
     font_name = font_props.get_name()
     print(font_name)
     
-print("hola""popó")
+

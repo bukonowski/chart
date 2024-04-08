@@ -88,3 +88,4 @@ class ChartTemplateDictionary(TypedDict):
     makeHousesGrid: str
     font: str
     bg_image : str
+    bg_image_wheel : str

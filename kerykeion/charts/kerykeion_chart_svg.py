@@ -96,6 +96,13 @@ class KerykeionChartSVG:
         #bg_image_wheel
         if new_bg_image_wheel is not None:
             self.bg_image_wheel = new_bg_image_wheel
+            self.bg_image_wheel_is_active = True
+            self.bg_image_wheel_pattern = f"<defs><pattern id=\"image\" x=\"0\" y=\"0\" width=\"100%\" height=\"100%\"><image xlink:href=\"{new_bg_image_wheel}\" x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" /></pattern></defs>"
+        else:
+            self.bg_image_wheel = new_bg_image_wheel
+            self.bg_image_wheel_is_active = False
+            self.bg_image_wheel_pattern = ""
+
 
         # new output directory
         if new_output_directory:
@@ -1367,8 +1374,12 @@ class KerykeionChartSVG:
             td["c2style"] = f"fill: {self.chart_colors_settings['paper_1']}; fill-opacity:.4; stroke: {self.chart_colors_settings['zodiac_transit_ring_1']}; stroke-opacity:.4; stroke-width: 1px"
 
             td["c3"] = 'cx="' + str(r) + '" cy="' + str(r) + '" r="' + str(r - 160) + '"'
-            td["c3style"] = f"fill: {self.chart_colors_settings['paper_1']}; fill-opacity:.8; stroke: {self.chart_colors_settings['zodiac_transit_ring_0']}; stroke-width: 1px"
-
+            if self.bg_image_wheel_is_active == True:
+                td["bg_image_wheel"] = self.bg_image_wheel_pattern
+                td["c3style"] = f'fill:url(#image); fill-opacity:.8; stroke: {self.chart_colors_settings["zodiac_radix_ring_0"]}; stroke-width: 1px'
+            else:
+                td["bg_image_wheel"] = self.bg_image_wheel_pattern
+                td["c3style"] = f"fill: {self.chart_colors_settings['paper_1']}; fill-opacity:.8; stroke: {self.chart_colors_settings['zodiac_transit_ring_0']}; stroke-width: 1px"
             td["makeAspects"] = self._makeAspectsTransit(r, (r - 160))
             td["makeAspectGrid"] = self._makeAspectTransitGrid(r)
             td["makePatterns"] = ""
@@ -1384,7 +1395,12 @@ class KerykeionChartSVG:
             td["c2"] = f'cx="{r}" cy="{r}" r="{r - self.c2}"'
             td["c2style"] = f'fill: {self.chart_colors_settings["paper_1"]}; fill-opacity:.2; stroke: {self.chart_colors_settings["zodiac_radix_ring_1"]}; stroke-opacity:.4; stroke-width: 1px'
             td["c3"] = f'cx="{r}" cy="{r}" r="{r - self.c3}"'
-            td["c3style"] = f'fill: {self.chart_colors_settings["paper_1"]}; fill-opacity:.8; stroke: {self.chart_colors_settings["zodiac_radix_ring_0"]}; stroke-width: 1px'
+            if self.bg_image_wheel_is_active == True:
+                td["bg_image_wheel"] = self.bg_image_wheel_pattern
+                td["c3style"] = f'fill:url(#image); fill-opacity:.8; stroke: {self.chart_colors_settings["zodiac_radix_ring_0"]}; stroke-width: 1px'
+            else:
+                td["bg_image_wheel"] = self.bg_image_wheel_pattern
+                td["c3style"] = f'fill: {self.chart_colors_settings["paper_1"]}; fill-opacity:.8; stroke: {self.chart_colors_settings["zodiac_radix_ring_0"]}; stroke-width: 1px'
             td["makeAspects"] = self._makeAspects(r, (r - self.c3))
             td["makeAspectGrid"] = self._makeAspectGrid(r)
             td["makePatterns"] = self._makePatterns()
@@ -1593,8 +1609,11 @@ if __name__ == "__main__":
     external_natal_chart2.makeSVG()
         
     imageURL = "https://images.wallpaperscraft.com/image/single/wire_web_drops_1212611_1280x720.jpg"
-    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, bright, "Symbol", None, imageURL)
+    wheel_url = "https://images.wallpaperscraft.com/image/single/buildings_silhouettes_sunset_1212633_1280x720.jpg"
+    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, bright, "Symbol", None, imageURL, wheel_url)
     external_natal_chart3.makeSVG()
     
-#    print(external_natal_chart2.font)
-#    print(external_natal_chart3.font)
+print(external_natal_chart3.bg_image_wheel_is_active)
+print(external_natal_chart3.bg_image_wheel_pattern)
+print(external_natal_chart3.bg_image_wheel)
+
