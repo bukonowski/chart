@@ -84,7 +84,14 @@ class KerykeionChartSVG:
 
         #bg_image
         if new_bg_image is not None:
-            self.bg_image = new_bg_image
+            x09 = "0"
+            y09 = "0"
+            w09 = "595.28"
+            h09 = "100%"
+            n09 = "none"
+            self.bg_image = f'<image x="{x09}" y="{y09}" width="{w09}" height="{h09}" xlink:href="{new_bg_image}" preserveAspectRatio="{n09}"/>'
+        else:
+            self.bg_image = "<symbol></symbol>"
 
         #bg_image_wheel
         if new_bg_image_wheel is not None:
@@ -1495,6 +1502,9 @@ class KerykeionChartSVG:
         else:
             td["paper_color_1"] = self.chart_colors_settings["paper_1"]
 
+        #background
+        td["bg_image"] = self.bg_image
+        
         # planets_color_X
         for i in range(len(self.planets_settings)):
             planet_id = self.planets_settings[i]["id"]
@@ -1582,7 +1592,8 @@ if __name__ == "__main__":
     external_natal_chart2 = KerykeionChartSVG(Juancito, "ExternalNatal", second, None, dark, "Palatino Linotype")
     external_natal_chart2.makeSVG()
         
-    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, bright, "Symbol", None)
+    imageURL = "https://images.wallpaperscraft.com/image/single/wire_web_drops_1212611_1280x720.jpg"
+    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, bright, "Symbol", None, imageURL)
     external_natal_chart3.makeSVG()
     
 #    print(external_natal_chart2.font)

@@ -16,3 +16,5 @@ for x in fuentes_instaladas:
     font_props = font_manager.FontProperties(fname=x)
     font_name = font_props.get_name()
     print(font_name)
+    
+print("hola""popó")

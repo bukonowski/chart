@@ -87,3 +87,4 @@ class ChartTemplateDictionary(TypedDict):
     makePlanetGrid: str
     makeHousesGrid: str
     font: str
+    bg_image : str
