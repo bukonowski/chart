@@ -27,18 +27,10 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                 <rect x="0" y="0" width="100%" height="100%" style="fill: $paper_color_1;fill-opacity: 1" />
                 $bg_image
 
-                <g transform="translate(200,550)">
-                    <text x="0" y="56" style="fill: $paper_color_0; font-size: 52px;  font-family: $font;">$stringTitle</text>
-                    <text x="12" y="76" style="fill: $paper_color_0; font-size: 8px  font-family: $font;">$stringDateTime</text>
-                    <text x="8" y="90" style="fill: $paper_color_0; font-size: 8px  font-family: $font;">$stringLocation $stringLat , $stringLon</text>
-
-
-
-                    <text x="20" y="480" style="fill: $paper_color_0; font-size: 10px  font-family: $font;">$bottomLeft1</text>
-                    <text x="20" y="494" style="fill: $paper_color_0; font-size: 10px  font-family: $font;">$bottomLeft2</text>
-                    <text x="20" y="508" style="fill: $paper_color_0; font-size: 10px  font-family: $font;">$bottomLeft3</text>
-                    <text x="20" y="522" style="fill: $paper_color_0; font-size: 10px  font-family: $font;">$bottomLeft4</text>
-                    <!-- Lunar Phase -->
+                <g transform="translate(0,542)">
+                    <text x="50%" y="56" style="fill: $paper_color_0; font-size: 52px; font-family: $font;" text-anchor="middle">$stringTitle</text>
+                    <text x="50%" y="76" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringDateTime</text>
+                    <text x="50%" y="90" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringLocation $stringLat , $stringLon</text>
                 </g>
                 <g transform="translate(20,518)">
                     <g transform="rotate($lunar_phase_rotate 20 10)">
@@ -471,7 +463,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                 </symbol>
                 <!-- ESQUEMA GENERAL -->
                 <g transform="translate(0,0)">
-                    <g transform="translate(55,50)">
+                    <g transform="translate(52.8 , 38) scale(1.02)">
                         <!-- Zodiac -->
                         $makeZodiac
                         <!-- First Circle -->
@@ -495,29 +487,36 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                     <!-- makePatterns -->
                     $makePatterns
                     <!-- AspectGrid -->
-                    $makeAspectGrid
+                    <g transform = "translate(-14 , 33)">
+                        $makeAspectGrid
+                    </g>
                     <!-- Elements -->
                     <!-- $makeElements -->
                     <!-- Planet Grid -->
-                    $makePlanetGrid
+                    <g transform = "translate(5 , 50)">
+                        $makePlanetGrid
+                    </g>
                     <!-- Houses Grid -->
                     <!-- $makeHousesGrid -->
                 </g>
-
             </g>
         </g>
     </g>
+    <!--
     <g width="100%" height="100%" style="stroke: red;">
-        <rect width="100%" height="100%" fill="none" /> <!-- RECTA QUE BORDEA EL ARCHIVO -->
+        <rect width="100%" height="100%" fill="none" /> 
 
-        <line x1="0" y1="5.36%" x2="100%" y2="5.36%" /> <!-- PRIMERA HORIZONTAL  -->
-        <line x1="0" y1="71.14%" x2="100%" y2="71.14%" /> <!-- TERCERA HORIZONTAL  -->
-        <line x1="0" y1="61.14%" x2="100%" y2="61.14%" /> <!-- SEGUNDA HORIZONTAL  -->
-        <line x1="0" y1="94.64%" x2="100%" y2="94.64%" /> <!-- CUARTA HORIZONTAL  -->
+        <line x1="0" y1="5.36%" x2="100%" y2="5.36%" /> 
+        <line x1="0" y1="71.14%" x2="100%" y2="71.14%" /> 
+        <line x1="0" y1="61.14%" x2="100%" y2="61.14%" /> 
+        <line x1="0" y1="94.64%" x2="100%" y2="94.64%" /> 
 
-        <line x1="5.36%" y1="100%" x2="5.36%" y2="0%" /> <!-- PRIMERA VERTICAL  -->
-        <line x1="50%" y1="100%" x2="50%" y2="0%" />  <!-- SEGUNDA VERTICAL  -->
-        <line x1="94.64%" y1="100%" x2="94.64%" y2="0%" /> <!-- TERCERA VERTICAL  -->
-    </g>
+        <line x1="5.36%" y1="100%" x2="5.36%" y2="0%" /> 
+        <line x1="50%" y1="100%" x2="50%" y2="0%" />  
+        <line x1="94.64%" y1="100%" x2="94.64%" y2="0%" /> 
+
+        <line x1="8.3%" y1="100%" x2="8.3%" y2="0%" stroke="black" />
+        <line x1="91.7%" y1="100%" x2="91.7%" y2="0%" stroke="black" />
+    </g> -->
 </svg>
 
