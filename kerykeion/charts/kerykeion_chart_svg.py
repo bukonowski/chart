@@ -551,7 +551,7 @@ class KerykeionChartSVG:
             # if transit
             if self.chart_type == "Transit" or self.chart_type == "Synastry":
                 dropin = self.c1 + 10
-            elif self.chart_type == "ExternalNatal":
+            elif self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
                 dropin = self.c1 + 20
             # Natal
             else:
@@ -729,14 +729,14 @@ class KerykeionChartSVG:
                 # if 22 < i < 27 it is asc,mc,dsc,ic (angles of chart)
                 # put on special line (rplanet is range from outer ring)
                 amin, bmin, cmin = 0, 0, 0
-                if self.chart_type == "ExternalNatal":
+                if self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
                     amin = -28 #-28
                     bmin = -10 #-10
                     cmin = 30  #30
-                elif self.chart_type == "Natal":
-                    amin = 15 #15
-                    bmin = 34 #34
-                    cmin = 30  #30
+#                elif self.chart_type == "Natal":
+#                    amin = 15 #15
+#                    bmin = 34 #34
+#                    cmin = 30  #30
 
                 if 22 < i < 27:
                     rplanet = 40 - cmin
@@ -757,7 +757,7 @@ class KerykeionChartSVG:
             if self.chart_type == "Transit" or self.chart_type == "Synastry":
                 scale = 0.8
                 
-            elif self.chart_type == "ExternalNatal":
+            elif self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
                 scale = 0.6
                 # line1 (interna)
                 x1 = sliceToX(0, (r - self.c3), trueoffset) + self.c3
@@ -1352,7 +1352,7 @@ class KerykeionChartSVG:
         td: ChartTemplateDictionary = dict() # type: ignore
         r = 240
 
-        if self.chart_type == "ExternalNatal":
+        if self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
             self.c1 = 56
             self.c2 = 92
             self.c3 = 112
@@ -1583,33 +1583,14 @@ if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
     setup_logging(level="debug")
 
-    first = AstrologicalSubject("Rahim", 1945, 10, 10, 10, 30, "Berlin", "DE")
-    second = AstrologicalSubject("Rahim", 1945, 10, 10, 10, 30, "Berlin", "DE")
-    # Internal Natal Chart
-    internal_natal_chart = KerykeionChartSVG(first)
-    internal_natal_chart.makeSVG()
-
-    # External Natal Chart
-    external_natal_chart = KerykeionChartSVG(first, "ExternalNatal", second)
-    external_natal_chart.makeSVG()
-
-    # Synastry Chart
-    synastry_chart = KerykeionChartSVG(first, "Synastry", second)
-    synastry_chart.makeSVG()
-
-    # Transits Chart
-    transits_chart = KerykeionChartSVG(first, "Transit", second)
-    transits_chart.makeSVG()
-
-    #testeos de theme
-    Juancito =  AstrologicalSubject("Juancito", 2003, 8, 8, 8, 30, "Berlin", "DE")
-    Juancito2 =  AstrologicalSubject("Juancito2", 2003, 8, 8, 8, 30, "Berlin", "DE")
-    
-    external_natal_chart2 = KerykeionChartSVG(Juancito, "ExternalNatal", second, None, dark, "Palatino Linotype")
-    external_natal_chart2.makeSVG()
+    first = AstrologicalSubject("John", 2003, 8, 8, 8, 30, "Berlin", "GB")
+    second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Liverpool", "GB")
         
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
     wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"
-    external_natal_chart3 = KerykeionChartSVG(Juancito2, "ExternalNatal", second, None, dark, None, None, imageURL, wheel_url)
-    external_natal_chart3.makeSVG()
-
+    
+    natalChart = KerykeionChartSVG(first, "Natal", second, None, dark, None, None, None, None)
+    natalChart.makeSVG()
+    
+    ExternalNatalChart = KerykeionChartSVG(first, "ExternalNatal", second, None, dark, None, None, None, None)
+    ExternalNatalChart.makeSVG()
