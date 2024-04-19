@@ -23,6 +23,11 @@ from typing import Union
 bright = Path("bright.json")
 dark = Path("dark.json")
 
+font_dirs = ["fonts"]  # The path to the custom font file.
+font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+for font_file in font_files:
+    font_manager.fontManager.addfont(font_file)
+
 class KerykeionChartSVG:
     """
     Creates the instance that can generate the chart with the
@@ -74,7 +79,7 @@ class KerykeionChartSVG:
         if new_font_name is not None:
             self.font = self.get_font(new_font_name)
         else:
-            self.font = "DejaVu Sans"
+            self.font = "Belgan Aesthetic"
         
         #bg_color
         if new_bg_color is not None:
@@ -285,7 +290,11 @@ class KerykeionChartSVG:
         font_path = font_manager.findfont(font_manager.FontProperties(family=new_font_name))
         font_props = font_manager.FontProperties(fname=font_path)
         font_name = font_props.get_name()
-        return font_name
+        if font_name == new_font_name:
+            return font_name
+        else:
+            font_name = "Belgan Aesthetic"
+            return font_name
     
     def set_output_directory(self, dir_path: Path) -> None:
         """
@@ -1583,14 +1592,12 @@ if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
     setup_logging(level="debug")
 
-    first = AstrologicalSubject("John", 2003, 8, 8, 8, 30, "Berlin", "GB")
+    first = AstrologicalSubject("Johng", 2003, 8, 8, 8, 30, "Berlin", "GB")
     second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Liverpool", "GB")
-        
+
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
     wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"
-    
-    natalChart = KerykeionChartSVG(first, "Natal", second, None, dark, None, None, None, None)
+
+    natalChart = KerykeionChartSVG(first, "Natal", second, None, dark, "awd", None, None, None)
     natalChart.makeSVG()
-    
-    ExternalNatalChart = KerykeionChartSVG(first, "ExternalNatal", second, None, dark, None, None, None, None)
-    ExternalNatalChart.makeSVG()
+    print(natalChart.font)
