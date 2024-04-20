@@ -3,11 +3,9 @@
     This is part of Kerykeion (C) 2023 Giacomo Battaglia
 """
 
-
 import pytz
 import logging
 from matplotlib import font_manager
-
 from datetime import datetime
 from kerykeion.settings.kerykeion_settings import get_settings
 from kerykeion.aspects.synastry_aspects import SynastryAspects
@@ -65,7 +63,7 @@ class KerykeionChartSVG:
         second_obj: Union[AstrologicalSubject, None] = None,
         new_output_directory: Union[str, None] = None,
         new_settings_file: Union[Path, None] = None,
-        new_font_name: Union[str, None] = None,
+        new_font_name: Union[str, None] = "Belgan Aesthetic",
         new_bg_color: Union[str, None] = None,
         new_bg_image: Union[str, None] = None,
         new_bg_image_wheel: Union[str, None] = None,
@@ -339,8 +337,8 @@ class KerykeionChartSVG:
                 offset = offset + 360.0
             elif offset > 360:
                 offset = offset - 360.0
-            #anillo interno
-            rad_1=30    #Con esto modifiquo el radio
+            
+            rad_1=30   
             x1 = sliceToX(0, r- 4  - (self.c1+rad_1), offset) +4+ (self.c1+rad_1)
             y1 = sliceToY(0, r- 4 - (self.c1+rad_1), offset) +4+ (self.c1+rad_1)
             x2 = sliceToX(0, r + 4 - (self.c1+rad_1), offset) - 4 + (self.c1+rad_1)
@@ -373,7 +371,7 @@ class KerykeionChartSVG:
             out += f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: #F00; stroke-width: 1px; stroke-opacity:.9;"/>'
 
         return out
-
+     
     def _lat2str(self, coord):
         """Converts a floating point latitude to string with
         degree, minutes and seconds and the appropriate sign
@@ -734,7 +732,6 @@ class KerykeionChartSVG:
                     rplanet = 130
                     switch = 1
             else:
-                #aca ajusté el radio de los planets
                 # if 22 < i < 27 it is asc,mc,dsc,ic (angles of chart)
                 # put on special line (rplanet is range from outer ring)
                 amin, bmin, cmin = 0, 0, 0
@@ -1090,8 +1087,8 @@ class KerykeionChartSVG:
     def _makeAspectGrid(self, r):
         out = ""
         style = "stroke:%s; stroke-width: 1px; stroke-opacity:.6; fill:none" % (self.chart_colors_settings["paper_0"])
-        xindent = 380 #Modificado
-        yindent = 750 #Modificado
+        xindent = 380 
+        yindent = 750 
         box = 14
         revr = list(range(len(self.available_planets_setting)))
         revr.reverse()
@@ -1379,6 +1376,7 @@ class KerykeionChartSVG:
             # circles
             td["c1"] = f'cx="{r}" cy="{r}" r="{r - 36}"'
             td["c1style"] = f'fill: none; stroke: {self.chart_colors_settings["zodiac_transit_ring_2"]}; stroke-width: 1px; stroke-opacity:.4;'
+
             td["c2"] = 'cx="' + str(r) + '" cy="' + str(r) + '" r="' + str(r - 72) + '"'
             td["c2style"] = f"fill: {self.chart_colors_settings['paper_1']}; fill-opacity:.4; stroke: {self.chart_colors_settings['zodiac_transit_ring_1']}; stroke-opacity:.4; stroke-width: 1px"
 
@@ -1400,7 +1398,7 @@ class KerykeionChartSVG:
 
             # circles
             td["c1"] = f'cx="{r}" cy="{r}" r="{r - self.c1}"'
-            td["c1style"] = f'fill: none; stroke: {self.chart_colors_settings["zodiac_radix_ring_2"]}; stroke-width: 1px; '
+            td["c1style"] = f'fill: none; stroke: {self.chart_colors_settings["zodiac_radix_ring_2"]}; stroke-width: 3px; '
             td["c2"] = f'cx="{r}" cy="{r}" r="{r - self.c2}"'
             td["c2style"] = f'fill: {self.chart_colors_settings["paper_1"]}; fill-opacity:.2; stroke: {self.chart_colors_settings["zodiac_radix_ring_1"]}; stroke-opacity:.4; stroke-width: 1px'
             td["c3"] = f'cx="{r}" cy="{r}" r="{r - self.c3}"'
@@ -1508,7 +1506,7 @@ class KerykeionChartSVG:
         else:
             td["stringLocation"] = self.location
 
-        td["stringDateTime"] = f"{self.user.day} {self.user.month} {self.user.year} · {self.user.hour:02d}:{self.user.minute:02d}"
+        td["stringDateTime"] = f"{self.user.day} {self.user.month_name} {self.user.year} · {self.user.hour:02d}:{self.user.minute:02d}"
 
         if self.chart_type == "Synastry":
             td["stringLat"] = f"{self.t_user.name}: "

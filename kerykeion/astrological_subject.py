@@ -7,7 +7,7 @@ import math
 import pytz
 import swisseph as swe
 import logging
-
+import calendar
 from datetime import datetime
 from kerykeion.fetch_geonames import FetchGeonames
 from kerykeion.kr_types import (
@@ -61,6 +61,7 @@ class AstrologicalSubject:
     day: int
     hour: int
     minute: int
+    month_name:str
     city: str
     nation: str
     lng: Union[int, float]
@@ -145,6 +146,7 @@ class AstrologicalSubject:
         self.name = name
         self.year = year
         self.month = month
+        self.month_name = calendar.month_name[month] if 1 <= month <= 12 else None  
         self.day = day
         self.hour = hour
         self.minute = minute
