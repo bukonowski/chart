@@ -465,8 +465,14 @@ class KerykeionChartSVG:
         if self.chart_type == "Transit" or self.chart_type == "Synastry":
             dropin = 54
         else:
-            dropin =self.c1 -30
-        sign = f'<g transform="translate(-16,-16)"><use x="{str(dropin + sliceToX(num, r - dropin, offset))}" y="{str(dropin + sliceToY(num, r - dropin, offset))}" xlink:href="#{type}" /></g>'
+            dropin =self.c1 - 54
+
+        symbol_x = dropin + sliceToX(num, r - dropin, offset)
+        symbol_y = dropin + sliceToY(num, r - dropin, offset)   
+        angle_to_center = math.atan2(r - symbol_y, r - symbol_x)
+        angle_degrees = math.degrees(angle_to_center)
+        rotation_transform = f'rotate({angle_degrees -90 } {symbol_x} {symbol_y})'
+        sign = f'<g transform="{rotation_transform}"><use x="{str(dropin + sliceToX(num, r - dropin, offset))}" y="{str(dropin + sliceToY(num, r - dropin, offset))}" xlink:href="#{type}" /></g>'
 
         return slice + "" + sign
 
