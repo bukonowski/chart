@@ -1411,7 +1411,7 @@ class KerykeionChartSVG:
 
             # circles
             td["c1"] = f'cx="{r}" cy="{r}" r="{r - self.c1}"'
-            td["c1style"] = f'fill: none; stroke: {self.chart_colors_settings["zodiac_radix_ring_2"]}; stroke-width: 3px; '
+            td["c1style"] = f'fill: none; stroke: {self.chart_colors_settings["zodiac_radix_ring_2"]}; stroke-width: 3px; stroke-dasharray: 90,1 '
             td["c2"] = f'cx="{r}" cy="{r}" r="{r - self.c2}"'
             td["c2style"] = f'fill: {self.chart_colors_settings["paper_1"]}; fill-opacity:.2; stroke: {self.chart_colors_settings["zodiac_radix_ring_1"]}; stroke-opacity:.4; stroke-width: 1px'
             td["c3"] = f'cx="{r}" cy="{r}" r="{r - self.c3}"'
