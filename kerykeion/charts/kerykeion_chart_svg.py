@@ -486,7 +486,6 @@ class KerykeionChartSVG:
 
     def _makeHouses(self, r):
         path = ""
-
         xr = 12
         for i in range(xr):
             # check transit
@@ -565,7 +564,7 @@ class KerykeionChartSVG:
                 dropin = self.c2 -2
             xtext = sliceToX(0, (r - dropin), text_offset) + dropin  # was 132
             ytext = sliceToY(0, (r - dropin), text_offset) + dropin  # was 132
-            angle_to_center = math.degrees(math.atan2(center_y - ytext, center_x - xtext))
+
 
             path = f'{path}<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {linecolor}; stroke-width: 2px; stroke-dasharray:3,2; stroke-opacity:1;"/>'
             path = path + f'<circle cx="{xtext}" cy="{ytext}" r="6" fill="#fff" opacity="1"/>'
