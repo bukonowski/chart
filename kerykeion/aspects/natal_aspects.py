@@ -126,10 +126,10 @@ if __name__ == "__main__":
 
     # All aspects
     aspects = NatalAspects(johnny)
-    print(aspects.all_aspects)
+    # print(aspects.all_aspects)
 
-    print("\n")
+    # print("\n")
 
     # Relevant aspects
     aspects = NatalAspects(johnny)
-    print(aspects.relevant_aspects)
+    # print(aspects.relevant_aspects)

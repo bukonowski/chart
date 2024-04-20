@@ -610,7 +610,7 @@ class AstrologicalSubject:
 
         KrData = AstrologicalSubjectModel(**self.__dict__)
         json_string = KrData.model_dump_json(exclude_none=True)
-        print(json_string)
+        # print(json_string)
 
         if dump:
             if destination_folder:
@@ -640,7 +640,7 @@ if __name__ == "__main__":
     setup_logging(level="debug")
 
     johnny = AstrologicalSubject("Johnny Depp", 1963, 6, 9, 0, 0, "Owensboro", "US")
-    print(json.loads(johnny.json(dump=True)))
+    # print(json.loads(johnny.json(dump=True)))
 
-    print('\n')
-    print(johnny.chiron)
+    # print('\n')
+    # print(johnny.chiron)

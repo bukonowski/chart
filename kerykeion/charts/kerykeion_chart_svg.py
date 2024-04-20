@@ -487,6 +487,7 @@ class KerykeionChartSVG:
     def _makeHouses(self, r):
         path = ""
         xr = 12
+
         for i in range(xr):
             # check transit
             if self.chart_type == "Transit" or self.chart_type == "Synastry":
@@ -553,22 +554,27 @@ class KerykeionChartSVG:
                     path = path + '<text style="fill: #0f0; fill-opacity: .4; font-size: 14px"><tspan x="' + str(xtext - 3) + '" y="' + str(ytext + 3) + '">' + str(i + 1) + "</tspan></text>"
                     path = f"{path}<line x1='{str(t_x1)}' y1='{str(t_y1)}' x2='{str(t_x2)}' y2='{str(t_y2)}' style='stroke: {t_linecolor}; stroke-width: 2px; stroke-opacity:1;'/>"
 
-            #Radio de las houses
             # if transit
             if self.chart_type == "Transit" or self.chart_type == "Synastry":
                 dropin = self.c1 + 10
             elif self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
                 dropin = self.c1 + 20
-            # Natal
-            else:
-                dropin = self.c2 -2
-            xtext = sliceToX(0, (r - dropin), text_offset) + dropin  # was 132
-            ytext = sliceToY(0, (r - dropin), text_offset) + dropin  # was 132
 
 
+            xtext = sliceToX(0, (r - dropin), text_offset) + dropin  
+            ytext = sliceToY(0, (r - dropin), text_offset) + dropin  
+            xtext_center = (x1 + x2)/2
+            ytext_center = (y1 + y2)/2
+            angle_to_center = math.atan2(ytext_center - ytext, xtext_center - xtext)
+            text_rotation =  math.degrees(angle_to_center) 
+            if text_rotation < 0:
+              text_rotation += 360
+            
+
+            print(f" ROTACION DE LA CASA {i +1 }: {text_rotation}")
             path = f'{path}<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {linecolor}; stroke-width: 2px; stroke-dasharray:3,2; stroke-opacity:1;"/>'
             path = path + f'<circle cx="{xtext}" cy="{ytext}" r="6" fill="#fff" opacity="1"/>'
-            path = path + f'<text  style="fill:#1d2c56; fill-opacity: 1; font-size: 8px" x="{xtext}" y="{ytext}" dominant-baseline="middle" text-anchor="middle">{i + 1}</text>'
+            path = path + f'<text  transform="rotate({text_rotation} {xtext} {ytext})" style="fill:#1d2c56; fill-opacity: 1; font-size: 8px" x="{xtext}" y="{ytext}" dominant-baseline="middle" text-anchor="middle">{i + 1}</text>'
 
         return path
 
@@ -1600,3 +1606,5 @@ if __name__ == "__main__":
     natalChart = KerykeionChartSVG(first, "Natal", second, None, dark, "awd", None, None, None)
     natalChart.makeSVG()
     print(natalChart.font)
+
+    

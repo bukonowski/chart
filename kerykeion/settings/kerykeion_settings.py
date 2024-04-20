@@ -68,4 +68,4 @@ if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
     setup_logging(level="debug")
 
-    print(get_settings())
+    # print(get_settings())

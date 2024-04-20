@@ -102,7 +102,7 @@ if __name__ == "__main__":
     synastry_aspects = SynastryAspects(john, yoko)
 
     # All aspects
-    print(synastry_aspects.all_aspects)
+ #   print(synastry_aspects.all_aspects)
 
     # Relevant aspects
-    print(synastry_aspects.relevant_aspects)
+  #  print(synastry_aspects.relevant_aspects)
