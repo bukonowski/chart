@@ -38,7 +38,6 @@ class KerykeionChartSVG:
         - new_output_directory: Set the output directory (default: output_directory)
         - lang: language settings (default: "EN")
         - new_settings_file: Set the settings file (default: kr.config.json)
-        - font: Set the font style (default: DejaVu Sans)
         - new_bg_color: hexadecimal color
         - new_bg_image: image URL
         - new_bg_image_wheel: image URL
@@ -572,7 +571,7 @@ class KerykeionChartSVG:
             xtext_center = (x1 + x2)/2
             ytext_center = (y1 + y2)/2
             angle_to_center = math.atan2(ytext_center - ytext, xtext_center - xtext)
-            text_rotation =  math.degrees(angle_to_center) 
+            text_rotation =  math.degrees(angle_to_center) + 15
             if text_rotation < 0:
               text_rotation += 360
             
