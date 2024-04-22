@@ -104,8 +104,9 @@ class KerykeionChartSVG:
             self.bg_image_wheel = new_bg_image_wheel
             self.bg_image_wheel_is_active = False
             self.bg_image_wheel_pattern = ""
-
-
+            
+        #for c1 pattern
+        self.offset = 0
         # new output directory
         if new_output_directory:
             self.output_directory = Path(new_output_directory)
@@ -1413,8 +1414,22 @@ class KerykeionChartSVG:
             td["degreeRing"] = self._degreeRing(r)
 
             # circles
+            # Datos del círculo
+            self.offset = 360 - self.user.houses_degree_ut[6]
+            perimetro = 2 * 3.1416 * 194
+            num_segmentos = 12 # Número de segmentos
+            porcentaje_separacion = 5 # Ajustar separación
+            longitud_segmento = perimetro / num_segmentos # Longitud de cada segmento
+            longitud_separacion = longitud_segmento * porcentaje_separacion / 100 # Longitud de cada separación
+            variable_separacion = 1 # Ajustar separación
+
+            longitud_segmento = longitud_segmento - variable_separacion * longitud_separacion
+            longitud_separacion = longitud_separacion * variable_separacion
+
+            # Crear el valor de stroke-dasharray
+            dasharray = f"{longitud_segmento} {longitud_separacion}"
             td["c1"] = f'cx="{r}" cy="{r}" r="{r - 46}"'
-            td["c1style"] = f'fill: none; stroke: {self.chart_colors_settings["zodiac_radix_ring_2"]}; stroke-width: 3px; stroke-dasharray: 90,1 '
+            td["c1style"] = f'fill: none; stroke: {self.chart_colors_settings["zodiac_radix_ring_2"]}; stroke-width: 3px; stroke-dasharray: {dasharray}; stroke-dashoffset: {(perimetro/360*self.offset)-5}'
             td["c2"] = f'cx="{r}" cy="{r}" r="{r - self.c2}"'
             td["c2style"] = f'fill: {self.chart_colors_settings["paper_1"]}; fill-opacity:.2; stroke: {self.chart_colors_settings["zodiac_radix_ring_1"]}; stroke-opacity:.4; stroke-width: 1px'
             td["c3"] = f'cx="{r}" cy="{r}" r="{r - self.c3}"'
@@ -1606,14 +1621,19 @@ if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
     setup_logging(level="debug")
 
-    first = AstrologicalSubject("Johng", 2003, 8, 8, 8, 30, "Berlin", "GB")
+    first = AstrologicalSubject("Johng", 1800, 2, 11, 3, 5, "Berlin", "GB")
     second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Liverpool", "GB")
 
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
     wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"
 
-    natalChart = KerykeionChartSVG(first, "Natal", second, None, dark, "awd", None, None, None)
+    natalChart = KerykeionChartSVG(first, "Natal", None, None, dark, "awd", None, None, None)
     natalChart.makeSVG()
-    print(natalChart.font)
+    
+    natalChart2 = KerykeionChartSVG(second, "Natal", None, None, dark, "awd", None, None, None)
+    natalChart2.makeSVG()
+    
+    print(natalChart.offset)
+    print(natalChart2.offset)
 
     
