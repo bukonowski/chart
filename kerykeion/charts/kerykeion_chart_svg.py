@@ -465,8 +465,19 @@ class KerykeionChartSVG:
             dropin = 54
         else:
             dropin =self.c1 -30
-        sign = f'<g transform="translate(-16,-16)"><use  x="{str(dropin + sliceToX(num, r - dropin, offset))}" y="{str(dropin + sliceToY(num, r - dropin, offset))}" xlink:href="#{type}" /></g>'
-        return slice + "" + sign
+        symbol_x = dropin + sliceToX(num, r - dropin, offset)
+        symbol_y = dropin + sliceToY(num, r - dropin, offset)
+        angle_to_center = math.atan2(r - symbol_y, r - symbol_x)
+        angle_degrees = math.degrees(angle_to_center)
+        angle_degrees-= 90
+        if 90 <= angle_degrees < 270:
+            angle_degrees += 180
+        rotation_transform = f'rotate({angle_degrees} {symbol_x} {symbol_y})'
+
+
+        sign = f'<g transform=" {rotation_transform} translate({symbol_x}, {symbol_y}) scale(0.6) translate(-16, -16)"><use xlink:href="#{type}" /></g>'
+
+        return slice + sign
 
     def _makeZodiac(self, r):
         output = ""
