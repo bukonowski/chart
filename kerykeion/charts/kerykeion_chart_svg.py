@@ -1621,7 +1621,7 @@ if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
     setup_logging(level="debug")
 
-    first = AstrologicalSubject("Johng", 1800, 2, 11, 3, 5, "Berlin", "GB")
+    first = AstrologicalSubject("qqqqqqqqqqqq", 1800, 2, 11, 3, 5, "Berlin", "GB")
     second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Liverpool", "GB")
 
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
