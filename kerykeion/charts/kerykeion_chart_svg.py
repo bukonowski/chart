@@ -46,7 +46,7 @@ class KerykeionChartSVG:
     second_obj: Union[AstrologicalSubject, None]
     chart_type: ChartType
     new_output_directory: Union[Path, None]
-    new_settings_file: Union[str, None]
+    new_settings_file: Union[Path, None]
     output_directory: Path
     new_font_name: Union[str, None]
     new_bg_color: Union[str, None]
@@ -59,7 +59,7 @@ class KerykeionChartSVG:
         chart_type: ChartType = "Natal",
         second_obj: Union[AstrologicalSubject, None] = None,
         new_output_directory: Union[str, None] = None,
-        new_settings_file: Union[str, None] = None,
+        new_settings_file: Union[Path, None] = None,
         new_font_name: Union[str, None] = "Belgan Aesthetic",
         new_bg_color: Union[str, None] = None,
         new_bg_image: Union[str, None] = None,
@@ -68,7 +68,7 @@ class KerykeionChartSVG:
         # Directories:
         DATA_DIR = Path(__file__).parent
         self.homedir = Path.home()
-        self.new_settings_file = new_settings_file.lower()
+        self.new_settings_file = new_settings_file
 
         #Font:
         if new_font_name is not None:
@@ -115,10 +115,6 @@ class KerykeionChartSVG:
         self.natal_width = 595.28  # Width of A4 in points (72 points per inch)
         self.full_width = 595.28  # Full width for A4 format
         
-        if self.new_settings_file == "bright":
-            self.new_settings_file = Path("bright.json")
-        else:
-            self.new_settings_file = Path("dark.json")
             
         self.parse_json_settings(self.new_settings_file)
         self.chart_type = chart_type
@@ -1592,13 +1588,13 @@ if __name__ == "__main__":
 
     first = AstrologicalSubject("qqqqqqqqqqqq", 1800, 2, 11, 3, 5, "Berlin")
     second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Liverpool")
-
+    
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
     wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"
 
-    natalChart = KerykeionChartSVG(first, "Natal", None, None, "BRIGHT", "awd", None, None, None)
+    natalChart = KerykeionChartSVG(first, "Natal", None, None, None, "awd", None, None, None)
     natalChart.makeSVG()
     
-    natalChart2 = KerykeionChartSVG(second, "Natal", None, None, "bright", "awd", None, None, None)
+    natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "awd", None, None, None)
     natalChart2.makeSVG()
     

@@ -1,6 +1,6 @@
 from kerykeion.charts.kerykeion_chart_svg import KerykeionChartSVG
 from kerykeion.astrological_subject import AstrologicalSubject
-
+from pathlib import Path
 # AstrologicalSubject
 name = "Rahim"
 year = 1945
@@ -12,7 +12,7 @@ city = "Berlin"
 nation = None   # Falta ver como funciona la nación, GB es la default
 
 # KerykeionChartSVG
-style = None # pasar a lowercase. Puede ser dark/bright  (DA ERROR SI LE DAMOS UN STRING, CAMBIAR LOGICA)
+style = "dark" # pasar a lowercase. Puede ser dark/bright  (DA ERROR SI LE DAMOS UN STRING, CAMBIAR LOGICA)
 font = None #String con el nombre de la fuente (debe estar instalada)
 bg_image_wheel = None # string con url de imagen
 bg_image = None #String con url de imagen
@@ -21,15 +21,20 @@ bg_color = None # String con color en cualquier formato admitido por svg
 # Variables que no se van a usar pero deben estar presentes
 chart_type = "Natal"
 SecondSubject = None
-output_directory = None 
+output_directory = None #Path(__file__).resolve().parent / 'output'
 
 
 if __name__ == "__main__":
     from kerykeion.utilities import setup_logging   #solo para debug, se puede borrar
     setup_logging(level="debug")                    #solo para debug, se puede borrar
     
+    if style.lower() == "bright":
+        stylepath = Path("kerykeion\\charts\\bright.json")
+    else:
+        stylepath = Path("kerykeion\\charts\\dark.json")
+    
     subject = AstrologicalSubject(name, year, month, day, hour, minute, city)
-    Chart = KerykeionChartSVG(subject, chart_type, SecondSubject, output_directory, style, font, bg_color, bg_image, bg_image_wheel)
+    Chart = KerykeionChartSVG(subject, chart_type, SecondSubject, output_directory, stylepath, font, bg_color, bg_image, bg_image_wheel)
 
     # Generate SVG
     Chart.makeSVG()
