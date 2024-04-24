@@ -8,8 +8,8 @@ month = 10
 day = 10
 hour = 10
 minute = 10
-city = "Berlin"
-nation = None   # Falta ver como funciona la nación, GB es la default
+city = "Buenos Aires"
+nation = "AR"   #Código de país de dos letras
 
 # KerykeionChartSVG
 style = "dark"
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         style = Path("kerykeion\\charts\\bright.json")
     else:
         style = Path("kerykeion\\charts\\dark.json")
-    
+
     subject = AstrologicalSubject(name, year, month, day, hour, minute, city)
     Chart = KerykeionChartSVG(subject, chart_type, SecondSubject, output_directory, style, font, bg_color, bg_image, bg_image_wheel)
 
@@ -43,11 +43,10 @@ if __name__ == "__main__":
 
 # TODO: Crear API que reciba las variables de arriba (armar el json) (Flask o FastAPI)
 # TODO: Limpiar proyecto¿?
-# TODO: Ver funcionamiento de Nation en la clase AstrologicalSubject
-# TODO: Cambiar ouput_path para guardar los chart en la carpeta "output"
 # TODO: Devolver el chart con la API
+
 # TODO: Subir el proyecto a koyeb.app (Quizá con la cuenta de chambeadevs)
 # TODO: Si usamos la cuenta de chambeadevs hay que hacerle un github
+
 # TODO: Testear API con Postman
-# TODO: Dejar de ser pobres
-# TODO: Si lo de arriba no se puede, subir la colección de postman a rapidapi
+# TODO:subir la colección de postman a rapidapi
