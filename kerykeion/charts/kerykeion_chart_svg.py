@@ -18,8 +18,6 @@ from pathlib import Path
 from string import Template
 from typing import Union
 
-bright = Path("bright.json")
-dark = Path("dark.json")
 
 font_dirs = ["fonts"]  # The path to the custom font file.
 font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
@@ -37,7 +35,7 @@ class KerykeionChartSVG:
         - second_obj: Second kerykeion object (Not required if type is Natal)
         - new_output_directory: Set the output directory (default: output_directory)
         - lang: language settings (default: "EN")
-        - new_settings_file: Set the settings file (default: kr.config.json)
+        - new_settings_file: Set the settings file, receive "dark" or "bright"
         - new_bg_color: hexadecimal color
         - new_bg_image: image URL
         - new_bg_image_wheel: image URL
@@ -48,7 +46,7 @@ class KerykeionChartSVG:
     second_obj: Union[AstrologicalSubject, None]
     chart_type: ChartType
     new_output_directory: Union[Path, None]
-    new_settings_file: Union[Path, None]
+    new_settings_file: Union[str, None]
     output_directory: Path
     new_font_name: Union[str, None]
     new_bg_color: Union[str, None]
@@ -61,7 +59,7 @@ class KerykeionChartSVG:
         chart_type: ChartType = "Natal",
         second_obj: Union[AstrologicalSubject, None] = None,
         new_output_directory: Union[str, None] = None,
-        new_settings_file: Union[Path, None] = None,
+        new_settings_file: Union[str, None] = None,
         new_font_name: Union[str, None] = "Belgan Aesthetic",
         new_bg_color: Union[str, None] = None,
         new_bg_image: Union[str, None] = None,
@@ -70,7 +68,7 @@ class KerykeionChartSVG:
         # Directories:
         DATA_DIR = Path(__file__).parent
         self.homedir = Path.home()
-        self.new_settings_file = new_settings_file
+        self.new_settings_file = new_settings_file.lower()
 
         #Font:
         if new_font_name is not None:
@@ -114,13 +112,15 @@ class KerykeionChartSVG:
             self.output_directory = self.homedir
 
         self.xml_svg = DATA_DIR / "templates/chart.xml"
-
-        # SVG Width and Height - Adjusted for A4 format and aspect ratio
         self.natal_width = 595.28  # Width of A4 in points (72 points per inch)
-        #self.natal_height = self.natal_width * 1.414  # Height maintaining the aspect ratio
         self.full_width = 595.28  # Full width for A4 format
-
-        self.parse_json_settings(new_settings_file)
+        
+        if self.new_settings_file == "bright":
+            self.new_settings_file = Path("bright.json")
+        else:
+            self.new_settings_file = Path("dark.json")
+            
+        self.parse_json_settings(self.new_settings_file)
         self.chart_type = chart_type
 
         # Kerykeion instance
@@ -1596,9 +1596,9 @@ if __name__ == "__main__":
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
     wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"
 
-    natalChart = KerykeionChartSVG(first, "Natal", None, None, dark, "awd", None, None, None)
+    natalChart = KerykeionChartSVG(first, "Natal", None, None, "BRIGHT", "awd", None, None, None)
     natalChart.makeSVG()
     
-    natalChart2 = KerykeionChartSVG(second, "Natal", None, None, dark, "awd", "red", None, None)
+    natalChart2 = KerykeionChartSVG(second, "Natal", None, None, "bright", "awd", None, None, None)
     natalChart2.makeSVG()
     

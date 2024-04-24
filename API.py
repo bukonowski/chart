@@ -37,7 +37,6 @@ if __name__ == "__main__":
 
 
 # TODO: Crear API que reciba las variables de arriba (armar el json) (Flask o FastAPI)
-# TODO: Corregir la lógica en la clase kerykeion para que reciba el tema como un string (usar lowercase)
 # TODO: Limpiar proyecto¿?
 # TODO: Ver funcionamiento de Nation en la clase AstrologicalSubject
 # TODO: Cambiar ouput_path para guardar los chart en la carpeta "output"
