@@ -581,7 +581,7 @@ class KerykeionChartSVG:
               text_rotation += 360
             
 
-            print(f" ROTACION DE LA CASA {i +1 }: {text_rotation}")
+            #print(f" rotation of house {i +1 }: {text_rotation}")
             path = f'{path}<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {linecolor}; stroke-width: 2px; stroke-dasharray:3,2; stroke-opacity:1;"/>'
             path = path + f'<circle cx="{xtext}" cy="{ytext}" r="6" fill="#fff" opacity="1"/>'
             path = path + f'<text  transform="rotate({text_rotation} {xtext} {ytext})" style="fill:#1d2c56; fill-opacity: 1; font-size: 8px" x="{xtext}" y="{ytext}" dominant-baseline="middle" text-anchor="middle">{i + 1}</text>'
@@ -1590,8 +1590,8 @@ if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
     setup_logging(level="debug")
 
-    first = AstrologicalSubject("qqqqqqqqqqqq", 1800, 2, 11, 3, 5, "Berlin", "GB")
-    second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Liverpool", "GB")
+    first = AstrologicalSubject("qqqqqqqqqqqq", 1800, 2, 11, 3, 5, "Berlin")
+    second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Liverpool")
 
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
     wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"
@@ -1599,6 +1599,6 @@ if __name__ == "__main__":
     natalChart = KerykeionChartSVG(first, "Natal", None, None, dark, "awd", None, None, None)
     natalChart.makeSVG()
     
-    natalChart2 = KerykeionChartSVG(second, "Natal", None, None, dark, "awd", None, None, None)
+    natalChart2 = KerykeionChartSVG(second, "Natal", None, None, dark, "awd", "red", None, None)
     natalChart2.makeSVG()
     
