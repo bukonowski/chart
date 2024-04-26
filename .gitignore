@@ -36,7 +36,6 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
-/output
 
 # Folders #
 ###########
@@ -45,7 +44,7 @@ __pycache__
 venv
 .vscode
 mecuriusastro.egg-info
-kerykeion.egg-info
+kerykeion_mod.egg-info
 build/
 dist/
 .geonames_cache
