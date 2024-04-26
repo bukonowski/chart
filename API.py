@@ -38,9 +38,7 @@ def generar_archivo():
                      as_attachment=True)
 
 if __name__ == "__main__":
-    #from kerykeion.utilities import setup_logging
-    #setup_logging(level="debug")
-    app.run(debug=False)
+    app.run(host='0.0.0.0', port=8000, debug=False)
 
 
 # TODO: Limpiar proyecto¿?
