@@ -22,7 +22,6 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
         <g transform="rotate($cfgRotate)">
 
             <g transform="scale($cfgZoom)">
-                <!---Rectangulo para ver espacio del svg-->
 
                 <rect x="0" y="0" width="100%" height="100%" style="fill: $paper_color_1;fill-opacity: 1" />
                 $bg_image
@@ -45,7 +44,6 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
 
                     </g>
                 </g>
-                <!-- bg_image_wheel_pattern -->
                 $bg_image_wheel
                 <!-- Planets (24x24) -->
                 <symbol id="Sun">
@@ -464,7 +462,6 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                         style="fill: $paper_color_0"
                     />
                 </symbol>
-                <!-- ESQUEMA GENERAL -->
                 <g transform="translate(0,0)">
                     <g transform="translate(52.8 , 38) scale(1.02)">
                         <!-- Zodiac -->
@@ -487,20 +484,13 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                         <!-- Aspects -->
                         $makeAspects
                     </g>
-                    <!-- makePatterns -->
                     $makePatterns
-                    <!-- AspectGrid -->
                     <g transform = "translate(-14 , 33)">
                         $makeAspectGrid
                     </g>
-                    <!-- Elements -->
-                    <!-- $makeElements -->
-                    <!-- Planet Grid -->
                     <g transform = "translate(5 , 50)">
                         $makePlanetGrid
                     </g>
-                    <!-- Houses Grid -->
-                    <!-- $makeHousesGrid -->
                 </g>
             </g>
         </g>
