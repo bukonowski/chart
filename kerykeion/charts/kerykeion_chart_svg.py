@@ -569,10 +569,10 @@ class KerykeionChartSVG:
 
             xtext = sliceToX(0, (r - dropin), text_offset) + dropin  
             ytext = sliceToY(0, (r - dropin), text_offset) + dropin  
-            xtext_center = (x1 + x2)/2
-            ytext_center = (y1 + y2)/2
-            angle_to_center = math.atan2(ytext_center - ytext, xtext_center - xtext)
-            text_rotation =  math.degrees(angle_to_center) + 15
+            xtext_center = 0 - xtext
+            ytext_center = 0 - ytext
+            angle_to_center = math.atan2(ytext_center, xtext_center)
+            text_rotation =  math.degrees(angle_to_center) -90
             if text_rotation < 0:
               text_rotation += 360
             
@@ -1584,7 +1584,7 @@ class KerykeionChartSVG:
 
 if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
-    setup_logging(level="debug")
+    #setup_logging(level="debug")
 
     first = AstrologicalSubject("qqqqqqqqqqqq", 1800, 2, 11, 3, 5, "Berlin")
     second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Liverpool")
