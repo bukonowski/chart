@@ -86,7 +86,7 @@ class KerykeionChartSVG:
         if new_bg_image is not None:
             x09 = "0"
             y09 = "0"
-            w09 = "595.28"
+            w09 = "650.4245745"
             h09 = "100%"
             n09 = "none"
             self.bg_image = f'<image x="{x09}" y="{y09}" width="{w09}" height="{h09}" xlink:href="{new_bg_image}" preserveAspectRatio="{n09}"/>'
@@ -198,9 +198,9 @@ class KerykeionChartSVG:
 
         # screen size
         if self.chart_type == "Natal":
-            self.screen_width = 595.28
+            self.screen_width = 650.4245745
         else:
-            self.screen_width = 595.28
+            self.screen_width = 650.4245745
         self.screen_height = 1200
 
         # check for home

@@ -1,10 +1,19 @@
 from setuptools import setup, find_packages
+from pathlib import Path
+
+def find_package_data(directory):
+    package_data = []
+    for path in Path(directory).rglob("*"):
+        if path.is_file():
+            package_data.append(str(path.relative_to(directory)))
+    return package_data
 
 setup(
     name='kerykeion-mod',
     version='0.1.0',
     packages=find_packages(),
     include_package_data=True,
+    package_data={'kerykeion': find_package_data('kerykeion')},
     install_requires=[
         'contourpy==1.2.1',
         'cycler==0.12.1',
