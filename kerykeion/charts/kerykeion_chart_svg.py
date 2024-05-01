@@ -334,16 +334,16 @@ class KerykeionChartSVG:
             elif offset > 360:
                 offset = offset - 360.0
             
-            rad_1=30   
-            x1 = sliceToX(0, r- 4  - (self.c1+rad_1), offset) +4+ (self.c1+rad_1)
+            rad_1= 25   
+            x1 = sliceToX(0, r- 4  - (self.c1+rad_1), offset) +4+ (self.c1+rad_1) 
             y1 = sliceToY(0, r- 4 - (self.c1+rad_1), offset) +4+ (self.c1+rad_1)
-            x2 = sliceToX(0, r + 4 - (self.c1+rad_1), offset) - 4 + (self.c1+rad_1)
-            y2 = sliceToY(0, r + 4 - (self.c1+rad_1), offset) - 4 + (self.c1+rad_1)
+            x2 = sliceToX(0, r + 4 - (self.c1+rad_1), offset) - 4 + (self.c1+rad_1) 
+            y2 = sliceToY(0, r + 4 - (self.c1+rad_1), offset) - 4 + (self.c1+rad_1) 
 
             out += f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke:{self.chart_colors_settings["paper_0"]}; stroke-width: 1px; stroke-opacity:1;"/>'
-            
+
             #anillo externo
-            rad2=10     #Con esto modifiquo el radio
+            rad2= 10     #Con esto modifiquo el radio
             x1b = sliceToX(0, r- 4  - (self.c1+rad2), offset) +4+ (self.c1+rad2)
             y1b = sliceToY(0, r- 4 - (self.c1+rad2), offset) +4+ (self.c1+rad2)
             x2b = sliceToX(0, r + 4 - (self.c1+rad2), offset) - 4 + (self.c1+rad2)
@@ -564,11 +564,15 @@ class KerykeionChartSVG:
             if self.chart_type == "Transit" or self.chart_type == "Synastry":
                 dropin = self.c1 + 10
             elif self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
-                dropin = self.c1 + 20
-
-
-            xtext = sliceToX(0, (r - dropin), text_offset) + dropin  
-            ytext = sliceToY(0, (r - dropin), text_offset) + dropin  
+                dropin = self.c1 + 17
+                
+            compensation = 1
+            xtext = sliceToX(0, (r - (dropin + compensation )), text_offset) + dropin  + compensation
+            ytext = sliceToY(0, (r - (dropin + compensation )), text_offset) + dropin  + compensation
+            
+            xhouse = sliceToX(0, (r - dropin), text_offset) + dropin  
+            yhouse = sliceToY(0, (r - dropin), text_offset) + dropin  
+            
             angle_to_center = math.atan2(r - ytext , r - xtext)
             angle_degrees = math.degrees(angle_to_center)
             angle_degrees -= 90
@@ -576,9 +580,8 @@ class KerykeionChartSVG:
                 angle_degrees += 180
             
 
-            #print(f" rotation of house {i +1 }: {text_rotation}")
             path = f'{path}<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {linecolor}; stroke-width: 2px; stroke-dasharray:3,2; stroke-opacity:1;"/>'
-            path = path + f'<circle cx="{xtext}" cy="{ytext}" r="6" fill="#fff" opacity="1"/>'
+            path = path + f'<circle cx="{xhouse}" cy="{yhouse}" r="6" fill="#fff" opacity="1"/>'
             path = path + f'<text  transform="rotate({angle_degrees} {xtext} {ytext})" style="fill:{self.chart_colors_settings["paper_1"]}; fill-opacity: 1; font-size: 8px" x="{xtext}" y="{ytext}" dominant-baseline="middle" text-anchor="middle">{i + 1}</text>'
 
         return path
@@ -1346,7 +1349,7 @@ class KerykeionChartSVG:
         if self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
             self.c1 = 56
             self.c2 = 92
-            self.c3 = 112
+            self.c3 = 120
         else:
             self.c1 = 12
             self.c2 = 36
@@ -1596,5 +1599,5 @@ if __name__ == "__main__":
     
     natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "awd", None, None, None)
     natalChart2.makeSVG()
-    #print(natalChart2.chart_colors_settings)
+    print(natalChart2.c1)
     
