@@ -671,6 +671,8 @@ class KerykeionChartSVG:
 
         planets_delta = list(map(zero, range(len(self.available_planets_setting))))
 
+        print (groups)
+        # print planets_by_pos
         for a in range(len(groups)):
             # Two grouped planets
             if len(groups[a]) == 2:
@@ -747,10 +749,10 @@ class KerykeionChartSVG:
             else:
                 amin, bmin, cmin = 0, 0, 0
                 if self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
-                    amin = -28
-                    bmin = -10
-                    cmin = 30
-
+                    comp = 3
+                    amin = -39 + comp
+                    bmin = -19 + comp
+                    cmin = -39 + comp
 
                 if 22 < i < 27:
                     rplanet = 40 - cmin
@@ -772,19 +774,23 @@ class KerykeionChartSVG:
                 scale = 0.8
                 
             elif self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
-                scale = 0.6
-                x1 = sliceToX(0, (r - self.c3), trueoffset) + self.c3
-                y1 = sliceToY(0, (r - self.c3), trueoffset) + self.c3
-                x2 = sliceToX(0, (r - rplanet - 30), trueoffset) + rplanet + 30
-                y2 = sliceToY(0, (r - rplanet - 30), trueoffset) + rplanet + 30
-
-                x1 = sliceToX(0, (r - rplanet - 30), trueoffset) + rplanet + 30
-                y1 = sliceToY(0, (r - rplanet - 30), trueoffset) + rplanet + 30
-                x2 = sliceToX(0, (r - rplanet - 10), offset) + rplanet + 10
-                y2 = sliceToY(0, (r - rplanet - 10), offset) + rplanet + 10
+                scale = 0.5
+                color = self.available_planets_setting[i]["color"]
+                # line2
+                
+                adif = 5 #con estos 2 se ajusta el largo de la linea que marca los planetas
+                bdif = 10 #
+                x1 = sliceToX(0, (r - rplanet - adif), trueoffset) + rplanet + adif
+                y1 = sliceToY(0, (r - rplanet - adif), trueoffset) + rplanet + adif
+                x2 = sliceToX(0, (r - rplanet - bdif), offset) + rplanet + bdif
+                y2 = sliceToY(0, (r - rplanet - bdif), offset) + rplanet + bdif
+                output += (
+                    '<line x1="%s" y1="%s" x2="%s" y2="%s" style="stroke-width:1px;stroke:%s;stroke-opacity:.5;"/>\n'
+                    % (x1, y1, x2, y2, color)
+                )
                 
             else:
-                scale = 0.7
+                scale = 1
             # output planet
             output += f'<g transform="translate(-{12 * scale},-{12 * scale})"><g transform="scale({scale})"><use x="{planet_x * (1/scale)}" y="{planet_y * (1/scale)}" xlink:href="#{self.available_planets_setting[i]["name"]}" /></g></g>'
 
@@ -1599,5 +1605,5 @@ if __name__ == "__main__":
     
     natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "awd", None, None, None)
     natalChart2.makeSVG()
-    print(natalChart2.c1)
-    
+    for x in natalChart2.points_deg_ut:
+        print(x)
