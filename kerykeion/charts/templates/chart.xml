@@ -495,7 +495,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
             </g>
         </g>
     </g>
-
+<!--
     <g width="100%" height="100%" style="stroke: red;">
         <rect width="100%" height="100%" fill="none"/> 
 
@@ -511,6 +511,6 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
         <line x1="8.3%" y1="100%" x2="8.3%" y2="0%" stroke="black"/>
         <line x1="91.7%" y1="100%" x2="91.7%" y2="0%" stroke="black"/>
     </g> 
-
+-->
 </svg>
 

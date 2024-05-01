@@ -569,18 +569,17 @@ class KerykeionChartSVG:
 
             xtext = sliceToX(0, (r - dropin), text_offset) + dropin  
             ytext = sliceToY(0, (r - dropin), text_offset) + dropin  
-            xtext_center = 0 - xtext
-            ytext_center = 0 - ytext
-            angle_to_center = math.atan2(ytext_center, xtext_center)
-            text_rotation =  math.degrees(angle_to_center) -90
-            if text_rotation < 0:
-              text_rotation += 360
+            angle_to_center = math.atan2(r - ytext , r - xtext)
+            angle_degrees = math.degrees(angle_to_center)
+            angle_degrees -= 90
+            if 90 <= angle_degrees < 270:
+                angle_degrees += 180
             
 
             #print(f" rotation of house {i +1 }: {text_rotation}")
             path = f'{path}<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {linecolor}; stroke-width: 2px; stroke-dasharray:3,2; stroke-opacity:1;"/>'
             path = path + f'<circle cx="{xtext}" cy="{ytext}" r="6" fill="#fff" opacity="1"/>'
-            path = path + f'<text  transform="rotate({text_rotation} {xtext} {ytext})" style="fill:#1d2c56; fill-opacity: 1; font-size: 8px" x="{xtext}" y="{ytext}" dominant-baseline="middle" text-anchor="middle">{i + 1}</text>'
+            path = path + f'<text  transform="rotate({angle_degrees} {xtext} {ytext})" style="fill:{self.chart_colors_settings["paper_1"]}; fill-opacity: 1; font-size: 8px" x="{xtext}" y="{ytext}" dominant-baseline="middle" text-anchor="middle">{i + 1}</text>'
 
         return path
 
@@ -1597,4 +1596,5 @@ if __name__ == "__main__":
     
     natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "awd", None, None, None)
     natalChart2.makeSVG()
+    #print(natalChart2.chart_colors_settings)
     
