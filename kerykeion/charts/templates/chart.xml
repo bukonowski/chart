@@ -463,7 +463,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                     />
                 </symbol>
                 <g transform="translate(0,0)">
-                    <g transform="translate(66 , 25) scale(1.08)">
+                    <g transform="translate(37 , 25) scale(1.08)">
                         <!-- Zodiac -->
                         $makeZodiac
                         <!-- First Circle -->
@@ -485,17 +485,17 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                         $makeAspects
                     </g>
                     $makePatterns
-                    <g transform = "translate(34 , 37)">
+                    <g transform = "translate(-30 , 30)">
                         $makeAspectGrid
                     </g>
-                    <g transform = "translate(10 , 59)">
+                    <g transform = "translate(20 , 59)">
                         $makePlanetGrid
                     </g>
                 </g>
             </g>
         </g>
     </g>
-    <!--
+
     <g width="100%" height="100%" style="stroke: red;">
         <rect width="100%" height="100%" fill="none"/> 
 
@@ -511,6 +511,6 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
         <line x1="8.3%" y1="100%" x2="8.3%" y2="0%" stroke="black"/>
         <line x1="91.7%" y1="100%" x2="91.7%" y2="0%" stroke="black"/>
     </g> 
-    -->
+
 </svg>
 
