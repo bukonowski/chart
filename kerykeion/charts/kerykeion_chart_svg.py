@@ -671,7 +671,6 @@ class KerykeionChartSVG:
 
         planets_delta = list(map(zero, range(len(self.available_planets_setting))))
 
-        print (groups)
         # print planets_by_pos
         for a in range(len(groups)):
             # Two grouped planets
@@ -750,8 +749,8 @@ class KerykeionChartSVG:
                 amin, bmin, cmin = 0, 0, 0
                 if self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
                     comp = 3
-                    amin = -39 + comp
-                    bmin = -19 + comp
+                    amin = -41 + comp
+                    bmin = -7 + comp
                     cmin = -39 + comp
 
                 if 22 < i < 27:
@@ -778,16 +777,16 @@ class KerykeionChartSVG:
                 color = self.available_planets_setting[i]["color"]
                 # line2
                 
-                adif = 5 #con estos 2 se ajusta el largo de la linea que marca los planetas
-                bdif = 10 #
+                adif = 0 #con estos 2 se ajusta el largo de la linea que marca los planetas
+                bdif = 0 #
                 x1 = sliceToX(0, (r - rplanet - adif), trueoffset) + rplanet + adif
                 y1 = sliceToY(0, (r - rplanet - adif), trueoffset) + rplanet + adif
                 x2 = sliceToX(0, (r - rplanet - bdif), offset) + rplanet + bdif
                 y2 = sliceToY(0, (r - rplanet - bdif), offset) + rplanet + bdif
-                output += (
-                    '<line x1="%s" y1="%s" x2="%s" y2="%s" style="stroke-width:1px;stroke:%s;stroke-opacity:.5;"/>\n'
-                    % (x1, y1, x2, y2, color)
-                )
+                #output += (
+                #    '<line x1="%s" y1="%s" x2="%s" y2="%s" style="stroke-width:1px;stroke:%s;stroke-opacity:.5;"/>\n'
+                #    % (x1, y1, x2, y2, color)
+                #)
                 
             else:
                 scale = 1
@@ -1605,5 +1604,4 @@ if __name__ == "__main__":
     
     natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "awd", None, None, None)
     natalChart2.makeSVG()
-    for x in natalChart2.points_deg_ut:
-        print(x)
+
