@@ -750,7 +750,7 @@ class KerykeionChartSVG:
                 if self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
                     comp = 3
                     amin = -41 + comp
-                    bmin = -7 + comp
+                    bmin = -8.5 + comp
                     cmin = -39 + comp
 
                 if 22 < i < 27:
@@ -773,7 +773,7 @@ class KerykeionChartSVG:
                 scale = 0.8
                 
             elif self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
-                scale = 0.5
+                scale = 0.63
                 color = self.available_planets_setting[i]["color"]
                 # line2
                 
