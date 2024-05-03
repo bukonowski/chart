@@ -750,7 +750,7 @@ class KerykeionChartSVG:
                 if self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
                     comp = 3
                     amin = -41 + comp
-                    bmin = -8.5 + comp
+                    bmin = -10 + comp
                     cmin = -39 + comp
 
                 if 22 < i < 27:
@@ -1593,7 +1593,7 @@ if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
     #setup_logging(level="debug")
 
-    first = AstrologicalSubject("qqqqqqqqqqqq", 1800, 2, 11, 3, 5, "Berlin")
+    first = AstrologicalSubject("John D", 2003, 2, 22, 3, 5, "Berlin")
     second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Liverpool")
     
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
