@@ -749,8 +749,8 @@ class KerykeionChartSVG:
                 amin, bmin, cmin = 0, 0, 0
                 if self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
                     comp = 3
-                    amin = -41 + comp
-                    bmin = -10 + comp
+                    amin = -39 + comp
+                    bmin = -9.5 + comp
                     cmin = -39 + comp
 
                 if 22 < i < 27:
