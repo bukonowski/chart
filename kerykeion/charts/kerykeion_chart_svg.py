@@ -1370,8 +1370,8 @@ class KerykeionChartSVG:
             td["c1"] = f'cx="{r}" cy="{r}" r="{r - 36}"'
             td["c1style"] = f'fill: none; stroke: {self.chart_colors_settings["zodiac_transit_ring_2"]}; stroke-width: 1px; stroke-opacity:.4;'
 
-            td["c2"] = 'cx="' + str(r) + '" cy="' + str(r) + '" r="' + str(r - 72) + '"'
-            td["c2style"] = f"fill: {self.chart_colors_settings['paper_1']}; fill-opacity:.4; stroke: {self.chart_colors_settings['zodiac_transit_ring_1']}; stroke-opacity:.4; stroke-width: 1px"
+
+
 
             td["c3"] = 'cx="' + str(r) + '" cy="' + str(r) + '" r="' + str(r - 160) + '"'
             if self.bg_image_wheel_is_active == True:
@@ -1405,7 +1405,7 @@ class KerykeionChartSVG:
             td["c1"] = f'cx="{r}" cy="{r}" r="{r - 46}"'
             td["c1style"] = f'fill: none; stroke: {self.chart_colors_settings["zodiac_radix_ring_2"]}; stroke-width: 3px; stroke-dasharray: {dasharray}; stroke-dashoffset: {(perimeter/360*self.offset)-5}'
             td["c2"] = f'cx="{r}" cy="{r}" r="{r - self.c2}"'
-            td["c2style"] = f'fill: {self.chart_colors_settings["paper_1"]}; fill-opacity:.2; stroke: {self.chart_colors_settings["zodiac_radix_ring_1"]}; stroke-opacity:.4; stroke-width: 1px'
+            td["c2style"] = f'fill: {self.chart_colors_settings["paper_1"]}; fill-opacity:0; stroke: {self.chart_colors_settings["zodiac_radix_ring_1"]}; stroke-opacity:.4; stroke-width: 1px'
             td["c3"] = f'cx="{r}" cy="{r}" r="{r - self.c3}"'
             if self.bg_image_wheel_is_active == True:
                 td["bg_image_wheel"] = self.bg_image_wheel_pattern
@@ -1599,7 +1599,7 @@ if __name__ == "__main__":
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
     wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"
 
-    natalChart = KerykeionChartSVG(first, "Natal", None, None, None, "awd", None, None, None)
+    natalChart = KerykeionChartSVG(first, "Natal", None, None, None, "awd", "#7D4BE7", None, None)
     natalChart.makeSVG()
     
     natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "awd", None, None, None)
