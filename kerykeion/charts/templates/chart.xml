@@ -28,11 +28,11 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
 
                 <g transform="translate(0,542)">
                     <text x="50%" y="56" style="fill: $paper_color_0; font-size: 52px; font-family: $font;" text-anchor="middle">$stringTitle</text>
-                    <text x="50%" y="90" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringDateTime</text>
-                    <text x="50%" y="110" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringLocation</text>
+                    <text x="50%" y="$ystringDateTime" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringDateTime</text>
+                    <text x="50%" y="$ystringLocation" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringLocation</text>
 
-                    <text x="50%" y="130" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringLat</text>
-                    <text x="50%" y="150" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringLon</text>
+                    <text x="50%" y="$ystringLat" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringLat</text>
+                    <text x="50%" y="$ystringLon" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringLon</text>
                 </g>
                 <g transform="translate(20,518)">
                     <g transform="rotate($lunar_phase_rotate 20 10)">

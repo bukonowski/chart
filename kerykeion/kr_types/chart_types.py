@@ -35,6 +35,10 @@ class ChartTemplateDictionary(TypedDict):
     stringDateTime: str
     stringLat: str
     stringLon: str
+    ystringLocation: str
+    ystringDateTime: str
+    ystringLat: str
+    ystringLon: str
     stringPosition: str
     paper_color_0: str
     paper_color_1: str

@@ -52,7 +52,7 @@ class KerykeionChartSVG:
     new_bg_color: Union[str, None]
     new_bg_image: Union[str, None]
     new_bg_image_wheel: Union[str, None]
-
+    name_spacing:bool
     def __init__(
         self,
         first_obj: AstrologicalSubject,
@@ -64,11 +64,30 @@ class KerykeionChartSVG:
         new_bg_color: Union[str, None] = None,
         new_bg_image: Union[str, None] = None,
         new_bg_image_wheel: Union[str, None] = None,
+        name_spacing:bool = False,
     ):
         # Directories:
         DATA_DIR = Path(__file__).parent
         self.homedir = Path.home()
         self.new_settings_file = new_settings_file
+
+
+        #name_spacing
+        for char in first_obj.name:
+            if char in ['j', 'q', 'g', 'p']:
+                name_spacing = True
+                print(char)
+                break
+        else:
+            name_spacing = False
+
+        self.name_spacing = name_spacing
+                
+
+    
+        
+ 
+            
 
         #Font:
         if new_font_name is not None:
@@ -1424,6 +1443,7 @@ class KerykeionChartSVG:
         td["svgHeight"] = str(svgHeight)
         td["viewbox"] = viewbox
 
+
         if self.chart_type == "Synastry":
             td["stringTitle"] = f"{self.name} {self.language_settings['and_word']} {self.t_user.name}"
 
@@ -1438,6 +1458,23 @@ class KerykeionChartSVG:
         else:
             td["stringName"] = ""
 
+
+
+
+        if self.name_spacing:
+            ystringDateTime = 90
+        else:
+            ystringDateTime= 80
+
+        ystringLocation = ystringDateTime + 20
+        ystringLat= ystringLocation +20
+        ystringLon =  ystringLat +20 
+
+        td["ystringDateTime"] = ystringDateTime
+        td["ystringLat"] = ystringLat
+        td["ystringLon"] = ystringLon
+        td["ystringLocation"] = ystringLocation
+        
         # bottom left
         td["bottomLeft1"] = ""
         td["bottomLeft2"] = ""
@@ -1593,15 +1630,15 @@ if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
     #setup_logging(level="debug")
 
-    first = AstrologicalSubject("John D", 2003, 2, 22, 3, 5, "Bogota")
+    first = AstrologicalSubject("John q", 2003, 2, 22, 3, 5, "Bogota")
     second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Bogota")
     
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
     wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"
 
-    natalChart = KerykeionChartSVG(first, "Natal", None, None, None, "awd", "#7D4BE7", None, None)
+    natalChart = KerykeionChartSVG(first, "Natal", None, None, None, "awd", "#7D4BE7", None, None,None)
     natalChart.makeSVG()
     
-    natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "awd", None, None, None)
+    natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "awd", None, None, None,None)
     natalChart2.makeSVG()
 
