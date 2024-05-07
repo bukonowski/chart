@@ -515,7 +515,6 @@ class KerykeionChartSVG:
                 )
             )
         return output
-
     def _makeHouses(self, r):
         path = ""
         xr = 12
