@@ -48,6 +48,7 @@ class KerykeionChartSVG:
     new_output_directory: Union[Path, None]
     new_settings_file: Union[Path, None]
     output_directory: Path
+    new_font: Union[str, None]
     new_font_name: Union[str, None]
     new_bg_color: Union[str, None]
     new_bg_image: Union[str, None]
@@ -60,6 +61,7 @@ class KerykeionChartSVG:
         second_obj: Union[AstrologicalSubject, None] = None,
         new_output_directory: Union[str, None] = None,
         new_settings_file: Union[Path, None] = None,
+        new_font: Union[str, None] = "Belgan Aesthetic",
         new_font_name: Union[str, None] = "Belgan Aesthetic",
         new_bg_color: Union[str, None] = None,
         new_bg_image: Union[str, None] = None,
@@ -90,10 +92,15 @@ class KerykeionChartSVG:
             
 
         #Font:
-        if new_font_name is not None:
-            self.font = self.get_font(new_font_name)
+        if new_font is not None:
+            self.font = self.get_font(new_font)
         else:
             self.font = "Belgan Aesthetic"
+            
+        if new_font_name is not None:
+            self.font_name = self.get_font(new_font_name)
+        else:
+            self.font_name = "Belgan Aesthetic"
         
         #bg_color
         if new_bg_color is not None:
@@ -1405,6 +1412,7 @@ class KerykeionChartSVG:
             td["chart_width"] = self.full_width
         else:
             td["font"] = self.font
+            td["font_name"] = self.font_name
             td["transitRing"] = ""
             td["degreeRing"] = self._degreeRing(r)
 
@@ -1636,9 +1644,9 @@ if __name__ == "__main__":
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
     wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"
 
-    natalChart = KerykeionChartSVG(first, "Natal", None, None, None, "awd", "#7D4BE7", None, None,None)
+    natalChart = KerykeionChartSVG(first, "Natal", None, None, None, "Symbol" , "Gadugi", "#7D4BE7" , None, None,None)
     natalChart.makeSVG()
     
-    natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "awd", None, None, None,None)
+    natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "Symbol" , "Gadugi", None, None, None,None)
     natalChart2.makeSVG()
 

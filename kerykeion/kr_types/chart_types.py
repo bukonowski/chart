@@ -91,5 +91,6 @@ class ChartTemplateDictionary(TypedDict):
     makePlanetGrid: str
     makeHousesGrid: str
     font: str
+    font_name: str
     bg_image : str
     bg_image_wheel : str

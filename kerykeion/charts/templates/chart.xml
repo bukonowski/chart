@@ -27,7 +27,7 @@ This file is part of Kerykeion and is based on OpenAstro.org -->
                 $bg_image
 
                 <g transform="translate(0,542)">
-                    <text x="50%" y="56" style="fill: $paper_color_0; font-size: 52px; font-family: $font;" text-anchor="middle">$stringTitle</text>
+                    <text x="50%" y="56" style="fill: $paper_color_0; font-size: 52px; font-family: $font_name;" text-anchor="middle">$stringTitle</text>
                     <text x="50%" y="$ystringDateTime" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringDateTime</text>
                     <text x="50%" y="$ystringLocation" style="fill: $paper_color_0; font-size: 8px  font-family: $font;" text-anchor="middle">$stringLocation</text>
 
