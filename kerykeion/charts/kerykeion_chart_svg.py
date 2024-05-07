@@ -640,7 +640,6 @@ class KerykeionChartSVG:
 
     def _make_planets(self, r):
         planets_degut = {}
-        diff = range(len(self.available_planets_setting))
 
         for i in range(len(self.available_planets_setting)):
             if self.available_planets_setting[i]["is_active"] == 1:
@@ -653,301 +652,41 @@ class KerykeionChartSVG:
         output = ""
         keys = list(planets_degut.keys())
         keys.sort()
-        switch = 0
-
-        planets_degrouped = {}
-        groups = []
-        planets_by_pos = list(range(len(planets_degut)))
-        planet_drange = 3.4
-        # get groups closely together
-        group_open = False
-        for e in range(len(keys)):
-            i = planets_degut[keys[e]]
-            # get distances between planets
-            if e == 0:
-                prev = self.points_deg_ut[planets_degut[keys[-1]]]
-                next = self.points_deg_ut[planets_degut[keys[1]]]
-            elif e == (len(keys) - 1):
-                prev = self.points_deg_ut[planets_degut[keys[e - 1]]]
-                next = self.points_deg_ut[planets_degut[keys[0]]]
-            else:
-                prev = self.points_deg_ut[planets_degut[keys[e - 1]]]
-                next = self.points_deg_ut[planets_degut[keys[e + 1]]]
-            diffa = degreeDiff(prev, self.points_deg_ut[i])
-            diffb = degreeDiff(next, self.points_deg_ut[i])
-            planets_by_pos[e] = [i, diffa, diffb]
-
-            logging.debug(f'{self.available_planets_setting[i]["label"]}, {diffa}, {diffb}')
-
-            if diffb < planet_drange:
-                if group_open:
-                    groups[-1].append([e, diffa, diffb, self.available_planets_setting[planets_degut[keys[e]]]["label"]])
-                else:
-                    group_open = True
-                    groups.append([])
-                    groups[-1].append([e, diffa, diffb, self.available_planets_setting[planets_degut[keys[e]]]["label"]])
-            else:
-                if group_open:
-                    groups[-1].append([e, diffa, diffb, self.available_planets_setting[planets_degut[keys[e]]]["label"]])
-                group_open = False
 
         def zero(x):
             return 0
 
         planets_delta = list(map(zero, range(len(self.available_planets_setting))))
-
-        # print planets_by_pos
-        for a in range(len(groups)):
-            # Two grouped planets
-            if len(groups[a]) == 2:
-                next_to_a = groups[a][0][0] - 1
-                if groups[a][1][0] == (len(planets_by_pos) - 1):
-                    next_to_b = 0
-                else:
-                    next_to_b = groups[a][1][0] + 1
-                # if both planets have room
-                if (groups[a][0][1] > (2 * planet_drange)) & (groups[a][1][2] > (2 * planet_drange)):
-                    planets_delta[groups[a][0][0]] = -(planet_drange - groups[a][0][2]) / 2
-                    planets_delta[groups[a][1][0]] = +(planet_drange - groups[a][0][2]) / 2
-                # if planet a has room
-                elif groups[a][0][1] > (2 * planet_drange):
-                    planets_delta[groups[a][0][0]] = -planet_drange
-                # if planet b has room
-                elif groups[a][1][2] > (2 * planet_drange):
-                    planets_delta[groups[a][1][0]] = +planet_drange
-
-                # if planets next to a and b have room move them
-                elif (planets_by_pos[next_to_a][1] > (2.4 * planet_drange)) & (planets_by_pos[next_to_b][2] > (2.4 * planet_drange)):
-                    planets_delta[(next_to_a)] = groups[a][0][1] - planet_drange * 2
-                    planets_delta[groups[a][0][0]] = -planet_drange * 0.5
-                    planets_delta[next_to_b] = -(groups[a][1][2] - planet_drange * 2)
-                    planets_delta[groups[a][1][0]] = +planet_drange * 0.5
-
-                # if planet next to a has room move them
-                elif planets_by_pos[next_to_a][1] > (2 * planet_drange):
-                    planets_delta[(next_to_a)] = groups[a][0][1] - planet_drange * 2.5
-                    planets_delta[groups[a][0][0]] = -planet_drange * 1.2
-
-                # if planet next to b has room move them
-                elif planets_by_pos[next_to_b][2] > (2 * planet_drange):
-                    planets_delta[next_to_b] = -(groups[a][1][2] - planet_drange * 2.5)
-                    planets_delta[groups[a][1][0]] = +planet_drange * 1.2
-
-            # Three grouped planets or more
-            xl = len(groups[a])
-            if xl >= 3:
-                available = groups[a][0][1]
-                for f in range(xl):
-                    available += groups[a][f][2]
-                need = (3 * planet_drange) + (1.2 * (xl - 1) * planet_drange)
-                leftover = available - need
-                xa = groups[a][0][1]
-                xb = groups[a][(xl - 1)][2]
-
-                # center
-                if (xa > (need * 0.5)) & (xb > (need * 0.5)):
-                    startA = xa - (need * 0.5)
-                # position relative to next planets
-                else:
-                    startA = (leftover / (xa + xb)) * xa
-                    startB = (leftover / (xa + xb)) * xb
-
-                if available > need:
-                    planets_delta[groups[a][0][0]] = startA - groups[a][0][1] + (1.5 * planet_drange)
-                    for f in range(xl - 1):
-                        planets_delta[groups[a][(f + 1)][0]] = 1.2 * planet_drange + planets_delta[groups[a][f][0]] - groups[a][f][2]
-
+        reduction_factor = 13
+        threshold = 5
         for e in range(len(keys)):
             i = planets_degut[keys[e]]
 
             # coordinates
-            if self.chart_type == "Transit" or self.chart_type == "Synastry":
-                if 22 < i < 27:
-                    rplanet = 76
-                elif switch == 1:
-                    rplanet = 110
-                    switch = 0
-                else:
-                    rplanet = 130
-                    switch = 1
-            else:
-                amin, bmin, cmin = 0, 0, 0
-                if self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
-                    comp = 3
-                    amin = -39 + comp
-                    bmin = -9.5 + comp
-                    cmin = -39 + comp
-
-                if 22 < i < 27:
-                    rplanet = 40 - cmin
-                elif switch == 1:
-                    rplanet = 74 - amin
-                    switch = 0
-                else:
-                    rplanet = 94 - bmin
-                    switch = 1
-
-            rtext = 45
-
+            rplanet = 110
             offset = (int(self.user.houses_degree_ut[6]) / -1) + int(self.points_deg_ut[i] + planets_delta[e])
-            trueoffset = (int(self.user.houses_degree_ut[6]) / -1) + int(self.points_deg_ut[i])
-
+            
             planet_x = sliceToX(0, (r - rplanet), offset) + rplanet
             planet_y = sliceToY(0, (r - rplanet), offset) + rplanet
-            if self.chart_type == "Transit" or self.chart_type == "Synastry":
-                scale = 0.8
+            scale = 0.6
+            
+            # Check proximity with other planets
+            adjust_rplanet = rplanet  # Variable to store adjusted rplanet for current planet
+            
+            for other_planet_index in range(e + 1, len(keys)):  # Start loop from next planet
+                other_planet_offset = (int(self.user.houses_degree_ut[6]) / -1) + int(self.points_deg_ut[planets_degut[keys[other_planet_index]]] + planets_delta[other_planet_index])
+                distance_between_planets = abs(offset - other_planet_offset)
                 
-            elif self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
-                scale = 0.63
-                color = self.available_planets_setting[i]["color"]
-                # line2
-                
-                adif = 0 #con estos 2 se ajusta el largo de la linea que marca los planetas
-                bdif = 0 #
-                x1 = sliceToX(0, (r - rplanet - adif), trueoffset) + rplanet + adif
-                y1 = sliceToY(0, (r - rplanet - adif), trueoffset) + rplanet + adif
-                x2 = sliceToX(0, (r - rplanet - bdif), offset) + rplanet + bdif
-                y2 = sliceToY(0, (r - rplanet - bdif), offset) + rplanet + bdif
-                #output += (
-                #    '<line x1="%s" y1="%s" x2="%s" y2="%s" style="stroke-width:1px;stroke:%s;stroke-opacity:.5;"/>\n'
-                #    % (x1, y1, x2, y2, color)
-                #)
-                
-            else:
-                scale = 1
-            # output planet
+                # If the distance is less than a threshold, reduce rplanet for the current planet only
+                if distance_between_planets < threshold:
+                    adjust_rplanet -= reduction_factor
+                    break  # No need to check other planets if one is already too close
+            
+            # Recalculate coordinates with new rplanet
+            planet_x = sliceToX(0, (r - adjust_rplanet), offset) + adjust_rplanet
+            planet_y = sliceToY(0, (r - adjust_rplanet), offset) + adjust_rplanet
+            
             output += f'<g transform="translate(-{12 * scale},-{12 * scale})"><g transform="scale({scale})"><use x="{planet_x * (1/scale)}" y="{planet_y * (1/scale)}" xlink:href="#{self.available_planets_setting[i]["name"]}" /></g></g>'
-
-        # make transit degut and display planets
-        if self.chart_type == "Transit" or self.chart_type == "Synastry":
-            group_offset = {}
-            t_planets_degut = {}
-            if self.chart_type == "Transit":
-                list_range = len(self.available_planets_setting) - 4
-            else:
-                list_range = len(self.available_planets_setting)
-            for i in range(list_range):
-                group_offset[i] = 0
-                if self.available_planets_setting[i]["is_active"] == 1:
-                    t_planets_degut[self.t_points_deg_ut[i]] = i
-            t_keys = list(t_planets_degut.keys())
-            t_keys.sort()
-
-            # grab closely grouped planets
-            groups = []
-            in_group = False
-            for e in range(len(t_keys)):
-                i_a = t_planets_degut[t_keys[e]]
-                if e == (len(t_keys) - 1):
-                    i_b = t_planets_degut[t_keys[0]]
-                else:
-                    i_b = t_planets_degut[t_keys[e + 1]]
-
-                a = self.t_points_deg_ut[i_a]
-                b = self.t_points_deg_ut[i_b]
-                diff = degreeDiff(a, b)
-                if diff <= 2.5:
-                    if in_group:
-                        groups[-1].append(i_b)
-                    else:
-                        groups.append([i_a])
-                        groups[-1].append(i_b)
-                        in_group = True
-                else:
-                    in_group = False
-            # loop groups and set degrees display adjustment
-            for i in range(len(groups)):
-                if len(groups[i]) == 2:
-                    group_offset[groups[i][0]] = -1.0
-                    group_offset[groups[i][1]] = 1.0
-                elif len(groups[i]) == 3:
-                    group_offset[groups[i][0]] = -1.5
-                    group_offset[groups[i][1]] = 0
-                    group_offset[groups[i][2]] = 1.5
-                elif len(groups[i]) == 4:
-                    group_offset[groups[i][0]] = -2.0
-                    group_offset[groups[i][1]] = -1.0
-                    group_offset[groups[i][2]] = 1.0
-                    group_offset[groups[i][3]] = 2.0
-
-            switch = 0
-            for e in range(len(t_keys)):
-                i = t_planets_degut[t_keys[e]]
-
-                if 22 < i < 27:
-                    rplanet = 9
-                elif switch == 1:
-                    rplanet = 18
-                    switch = 0
-                else:
-                    rplanet = 26
-                    switch = 1
-
-                zeropoint = 360 - self.user.houses_degree_ut[6]
-                t_offset = zeropoint + self.t_points_deg_ut[i]
-                if t_offset > 360:
-                    t_offset = t_offset - 360
-                planet_x = sliceToX(0, (r - rplanet), t_offset) + rplanet
-                planet_y = sliceToY(0, (r - rplanet), t_offset) + rplanet
-                output += f'<g transform="translate(-6,-6)"><g transform="scale(0.5)"><use x="{planet_x*2}" y="{planet_y*2}" xlink:href="#{self.available_planets_setting[i]["name"]}" /></g></g>'
-
-                # transit planet line
-                x1 = sliceToX(0, r + 3, t_offset) - 3
-                y1 = sliceToY(0, r + 3, t_offset) - 3
-                x2 = sliceToX(0, r - 3, t_offset) + 3
-                y2 = sliceToY(0, r - 3, t_offset) + 3
-                output += f'<line x1="{str(x1)}" y1="{str(y1)}" x2="{str(x2)}" y2="{str(y2)}" style="stroke: {self.available_planets_setting[i]["color"]}; stroke-width: 1px; stroke-opacity:.8;"/>'
-
-                # transit planet degree text
-                rotate = self.user.houses_degree_ut[0] - self.t_points_deg_ut[i]
-                textanchor = "end"
-                t_offset += group_offset[i]
-                rtext = -3.0
-
-                if -90 > rotate > -270:
-                    rotate = rotate + 180.0
-                    textanchor = "start"
-                if 270 > rotate > 90:
-                    rotate = rotate - 180.0
-                    textanchor = "start"
-
-                if textanchor == "end":
-                    xo = 1
-                else:
-                    xo = -1
-                deg_x = sliceToX(0, (r - rtext), t_offset + xo) + rtext
-                deg_y = sliceToY(0, (r - rtext), t_offset + xo) + rtext
-                degree = int(t_offset)
-                output += f'<g transform="translate({deg_x},{deg_y})">'
-                output += f'<text transform="rotate({rotate})" text-anchor="{textanchor}'
-                output += f'" style="fill: {self.available_planets_setting[i]["color"]}; font-size: 10px;">{self._dec2deg(self.t_points_deg[i], type="1")}'
-                output += "</text></g>"
-
-            # check transit
-            if self.chart_type == "Transit" or self.chart_type == "Synastry":
-                dropin = 36
-            else:
-                dropin = 0
-
-            # planet line
-            x1 = sliceToX(0, r - (dropin + 3), offset) + (dropin + 3)
-            y1 = sliceToY(0, r - (dropin + 3), offset) + (dropin + 3)
-            x2 = sliceToX(0, (r - (dropin - 3)), offset) + (dropin - 3)
-            y2 = sliceToY(0, (r - (dropin - 3)), offset) + (dropin - 3)
-
-            output += f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {self.available_planets_setting[i]["color"]}; stroke-width: 2px; stroke-opacity:.6;"/>'
-
-            # check transit
-            if self.chart_type == "Transit" or self.chart_type == "Synastry":
-                dropin = 160
-            else:
-                dropin = 120
-
-            x1 = sliceToX(0, r - dropin, offset) + dropin
-            y1 = sliceToY(0, r - dropin, offset) + dropin
-            x2 = sliceToX(0, (r - (dropin - 3)), offset) + (dropin - 3)
-            y2 = sliceToY(0, (r - (dropin - 3)), offset) + (dropin - 3)
-            output += f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke: {self.available_planets_setting[i]["color"]}; stroke-width: 2px; stroke-opacity:.6;"/>'
 
         return output
 
