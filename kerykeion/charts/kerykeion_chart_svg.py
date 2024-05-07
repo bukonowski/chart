@@ -1638,8 +1638,8 @@ if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
     #setup_logging(level="debug")
 
-    first = AstrologicalSubject("John q", 2003, 2, 22, 3, 5, "Bogota")
-    second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Bogota")
+    first = AstrologicalSubject("John q", 2003, 2, 22, 3, 5, "Bogota", "CO")
+    second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Bogota", "CO")
     
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
     wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"

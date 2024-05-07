@@ -19,9 +19,11 @@ def generar_archivo():
     nation = data.get('nation', 'GB')
     style = data.get('style')
     font = data.get('font', "Belgan Aesthetic")
+    font_name = data.get('font_name', "Belgan Aesthetic")
     bg_image_wheel = data.get('bg_image_wheel', None)
     bg_image = data.get('bg_image', None)
     bg_color = data.get('bg_color', None)
+    name_spacing = data.get('name_spacing', True)
 
     if style.lower() == "bright":
         style_path = Path("kerykeion/charts/bright.json")
@@ -30,7 +32,7 @@ def generar_archivo():
 
     # create instances
     subject = AstrologicalSubject(name, year, month, day, hour, minute, city, nation)
-    chart = KerykeionChartSVG(subject, "Natal", None, "output", style_path, font, bg_color, bg_image, bg_image_wheel)
+    chart = KerykeionChartSVG(subject, "Natal", None, "output", style_path, font, font_name,  bg_color, bg_image, bg_image_wheel, name_spacing)
     chart.makeSVG()
     svg_file_path = chart.chartname
     return send_file(svg_file_path,
