@@ -663,7 +663,7 @@ class KerykeionChartSVG:
             i = planets_degut[keys[e]]
 
             # coordinates
-            rplanet = 110
+            rplanet = 109
             offset = (int(self.user.houses_degree_ut[6]) / -1) + int(self.points_deg_ut[i] + planets_delta[e])
             
             planet_x = sliceToX(0, (r - rplanet), offset) + rplanet
