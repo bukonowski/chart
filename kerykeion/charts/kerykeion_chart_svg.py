@@ -1120,6 +1120,21 @@ class KerykeionChartSVG:
         revr = list(range(len(self.available_planets_setting)))
         revr.reverse()
         counter = 0
+        
+        aspect_coordinates = {
+            0: {"x": 1, "y": -1}, #Circulo con palito diagonal superior
+            30: {"x": 0, "y": 0}, 
+            45: {"x": 0, "y": 0}, 
+            60: {"x": 1.2, "y": -0.5}, # x
+            72: {"x": 0.5, "y": -1.5}, #Q
+            90: {"x": 0.5, "y": -1}, # Cuadrado
+            120: {"x": 0.8, "y": -1}, # Triangulo
+            135: {"x": 0, "y": 0},
+            144: {"x": 0, "y": 0},
+            150: {"x": 0, "y": 0},
+            180: {"x": 0, "y": -2}, #Nodo 
+        }
+        
         for a in revr:
             counter += 1
             if self.available_planets_setting[a]["is_active"] == 1:
@@ -1139,7 +1154,12 @@ class KerykeionChartSVG:
                         xorb = xorb + box
                         for element in self.aspects_list:
                             if (element["p1"] == a and element["p2"] == b) or (element["p1"] == b and element["p2"] == a):
-                                out += f'<use  x="{xorb-box+1}" y="{yorb+1}" xlink:href="#orb{element["aspect_degrees"]}" />'
+                                aspect_degrees = element["aspect_degrees"]
+                                if aspect_degrees in aspect_coordinates:
+                                    x_correction = aspect_coordinates[aspect_degrees]["x"]
+                                    y_correction = aspect_coordinates[aspect_degrees]["y"]
+                                    out += f'<use x="{xorb - box + 1 + x_correction}" y="{yorb + 3 + y_correction}" xlink:href="#orb{aspect_degrees}" />'
+                                
 
         return out
 
@@ -1639,6 +1659,7 @@ if __name__ == "__main__":
 
     first = AstrologicalSubject("John q", 2003, 2, 22, 3, 5, "Bogota", "CO")
     second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Bogota", "CO")
+    third = AstrologicalSubject("Pablito", 2020, 1, 6, 6, 56, "Buenos Aires", "AR")
     
     imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
     wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"
@@ -1648,4 +1669,7 @@ if __name__ == "__main__":
     
     natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "Symbol" , "Gadugi", None, None, None,None)
     natalChart2.makeSVG()
+    
+    natalChart3 = KerykeionChartSVG(third, "Natal", None, None, None, "Symbol" , "Gadugi", None, None, None,None)
+    natalChart3.makeSVG()
 
