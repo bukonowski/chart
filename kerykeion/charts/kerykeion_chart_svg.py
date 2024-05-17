@@ -703,6 +703,19 @@ class KerykeionChartSVG:
 
             output += f'<g transform="translate(-{12 * scale},-{12 * scale})"><g transform="scale({scale})"><use x="{planet_x * (1/scale)}" y="{planet_y * (1/scale)}" xlink:href="#{self.available_planets_setting[i]["name"]}" /></g></g>'
 
+            trueoffset = (int(self.user.houses_degree_ut[6]) / -1) + int(self.points_deg_ut[i])
+            # line1
+            linelenght = 16
+            x1 = sliceToX(0, (r - self.c3), trueoffset) + self.c3
+            y1 = sliceToY(0, (r - self.c3), trueoffset) + self.c3
+            x2 = sliceToX(0, (r - rplanet - linelenght), trueoffset) + rplanet + linelenght
+            y2 = sliceToY(0, (r - rplanet - linelenght), trueoffset) + rplanet + linelenght
+            color = "white"
+            output += (
+                '<line x1="%s" y1="%s" x2="%s" y2="%s" style="stroke-width:1px;stroke:%s;stroke-opacity:1;"/>\n'
+                % (x1, y1, x2, y2, color)
+            )
+
         return output
 
     def _makePatterns(self):
