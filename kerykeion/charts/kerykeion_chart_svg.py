@@ -515,6 +515,7 @@ class KerykeionChartSVG:
                 )
             )
         return output
+    
     def _makeHouses(self, r):
         path = ""
         xr = 12
@@ -661,14 +662,15 @@ class KerykeionChartSVG:
             planets.sort(key=lambda planet: planet[1])
             n = len(planets)
             adjusted_angles = [planets[0][1]]
-
+            distancia_de_deteccion = 5
+            distancia_establecida = 7
             for i in range(1, n):
                 previous_angle = adjusted_angles[-1]
                 current_angle = planets[i][1]
 
                 # Asegurarse de que la diferencia es al menos 10 grados
-                if current_angle - previous_angle < 10:
-                    current_angle = previous_angle + 10
+                if current_angle - previous_angle < distancia_de_deteccion:
+                    current_angle = previous_angle + distancia_establecida
 
                 # Asegurarse de que el ángulo no exceda 360 grados
 
@@ -677,8 +679,8 @@ class KerykeionChartSVG:
             # Verificación adicional para comparar todos los planetas con cada uno de los otros planetas
             for i in range(n):
                 for j in range(i + 1, n):
-                    if abs(adjusted_angles[j] - adjusted_angles[i]) < 10:
-                        adjusted_angles[j] = (adjusted_angles[i] + 10) % 360
+                    if abs(adjusted_angles[j] - adjusted_angles[i]) < distancia_de_deteccion:
+                        adjusted_angles[j] = (adjusted_angles[i] + distancia_establecida) % 360
 
             # Ajustar los ángulos en la lista original
             for i in range(n):
@@ -702,10 +704,6 @@ class KerykeionChartSVG:
             output += f'<g transform="translate(-{12 * scale},-{12 * scale})"><g transform="scale({scale})"><use x="{planet_x * (1/scale)}" y="{planet_y * (1/scale)}" xlink:href="#{self.available_planets_setting[i]["name"]}" /></g></g>'
 
         return output
-
-
-
-
 
     def _makePatterns(self):
         """
@@ -859,7 +857,7 @@ class KerykeionChartSVG:
         for element in self.aspects_list:
             out += self._drawAspect(
                 r,
-                ar,
+                ar-5, #este determina el tamaño del circulo
                 element["p1_abs_pos"],
                 element["p2_abs_pos"],
                 self.aspects_settings[element["aid"]]["color"],
