@@ -640,55 +640,72 @@ class KerykeionChartSVG:
 
     def _make_planets(self, r):
         planets_degut = {}
+        def _value_element_from_planet(self, i):
+            pass
 
         for i in range(len(self.available_planets_setting)):
             if self.available_planets_setting[i]["is_active"] == 1:
-                # list of planets sorted by degree
                 logging.debug(f"planet: {i}, degree: {self.points_deg_ut[i]}")
                 planets_degut[self.points_deg_ut[i]] = i
 
             self._value_element_from_planet(i)
 
-        output = ""
         keys = list(planets_degut.keys())
         keys.sort()
 
-        def zero(x):
-            return 0
+        # Crear lista de planetas con sus índices y ángulos
+        planets = [(planets_degut[key], key) for key in keys]
 
-        planets_delta = list(map(zero, range(len(self.available_planets_setting))))
-        reduction_factor = 13
-        threshold = 5
-        for e in range(len(keys)):
-            i = planets_degut[keys[e]]
+        # Ajustar ángulos para asegurar que no haya diferencias menores a 10 grados
+        def adjust_planet_angles(planets):
+            planets.sort(key=lambda planet: planet[1])
+            n = len(planets)
+            adjusted_angles = [planets[0][1]]
 
-            # coordinates
-            rplanet = 109
-            offset = (int(self.user.houses_degree_ut[6]) / -1) + int(self.points_deg_ut[i] + planets_delta[e])
-            
+            for i in range(1, n):
+                previous_angle = adjusted_angles[-1]
+                current_angle = planets[i][1]
+
+                # Asegurarse de que la diferencia es al menos 10 grados
+                if current_angle - previous_angle < 10:
+                    current_angle = previous_angle + 10
+
+                # Asegurarse de que el ángulo no exceda 360 grados
+
+                adjusted_angles.append(current_angle)
+
+            # Verificación adicional para comparar todos los planetas con cada uno de los otros planetas
+            for i in range(n):
+                for j in range(i + 1, n):
+                    if abs(adjusted_angles[j] - adjusted_angles[i]) < 10:
+                        adjusted_angles[j] = (adjusted_angles[i] + 10) % 360
+
+            # Ajustar los ángulos en la lista original
+            for i in range(n):
+                planets[i] = (planets[i][0], adjusted_angles[i])
+
+            return planets
+
+        adjusted_planets = adjust_planet_angles(planets)
+        
+        # Generar el output basado en los ángulos ajustados
+        output = ""
+        scale = 0.6
+        rplanet = 109
+
+        for planet in adjusted_planets:
+            i, adjusted_angle = planet
+            offset = adjusted_angle + (int(self.user.houses_degree_ut[6]) / -1)
             planet_x = sliceToX(0, (r - rplanet), offset) + rplanet
             planet_y = sliceToY(0, (r - rplanet), offset) + rplanet
-            scale = 0.6
-            
-            # Check proximity with other planets
-            adjust_rplanet = rplanet  # Variable to store adjusted rplanet for current planet
-            
-            for other_planet_index in range(e + 1, len(keys)):  # Start loop from next planet
-                other_planet_offset = (int(self.user.houses_degree_ut[6]) / -1) + int(self.points_deg_ut[planets_degut[keys[other_planet_index]]] + planets_delta[other_planet_index])
-                distance_between_planets = abs(offset - other_planet_offset)
-                
-                # If the distance is less than a threshold, reduce rplanet for the current planet only
-                if distance_between_planets < threshold:
-                    adjust_rplanet -= reduction_factor
-                    break  # No need to check other planets if one is already too close
-            
-            # Recalculate coordinates with new rplanet
-            planet_x = sliceToX(0, (r - adjust_rplanet), offset) + adjust_rplanet
-            planet_y = sliceToY(0, (r - adjust_rplanet), offset) + adjust_rplanet
-            
+
             output += f'<g transform="translate(-{12 * scale},-{12 * scale})"><g transform="scale({scale})"><use x="{planet_x * (1/scale)}" y="{planet_y * (1/scale)}" xlink:href="#{self.available_planets_setting[i]["name"]}" /></g></g>'
 
         return output
+
+
+
+
 
     def _makePatterns(self):
         """
