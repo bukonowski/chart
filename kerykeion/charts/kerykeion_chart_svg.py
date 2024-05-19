@@ -692,7 +692,7 @@ class KerykeionChartSVG:
 
             trueoffset = (int(self.user.houses_degree_ut[6]) / -1) + int(self.points_deg_ut[i])
             # line1
-            linelenght = 16
+            linelenght = 12.5
             x1 = sliceToX(0, (r - self.c3), trueoffset) + self.c3
             y1 = sliceToY(0, (r - self.c3), trueoffset) + self.c3
             x2 = sliceToX(0, (r - rplanet - linelenght), trueoffset) + rplanet + linelenght
@@ -857,7 +857,7 @@ class KerykeionChartSVG:
         for element in self.aspects_list:
             out += self._drawAspect(
                 r,
-                ar-7, 
+                ar-3.6, 
                 element["p1_abs_pos"],
                 element["p2_abs_pos"],
                 self.aspects_settings[element["aid"]]["color"],
