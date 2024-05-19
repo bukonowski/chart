@@ -73,7 +73,6 @@ class KerykeionChartSVG:
         self.homedir = Path.home()
         self.new_settings_file = new_settings_file
 
-
         #name_spacing
         for char in first_obj.name:
             if char in ['j', 'q', 'g', 'p']:
@@ -85,12 +84,6 @@ class KerykeionChartSVG:
 
         self.name_spacing = name_spacing
                 
-
-    
-        
- 
-            
-
         #Font:
         if new_font is not None:
             self.font = self.get_font(new_font)
@@ -515,6 +508,7 @@ class KerykeionChartSVG:
                 )
             )
         return output
+    
     def _makeHouses(self, r):
         path = ""
         xr = 12
@@ -653,34 +647,30 @@ class KerykeionChartSVG:
         keys = list(planets_degut.keys())
         keys.sort()
 
-        # Crear lista de planetas con sus índices y ángulos
         planets = [(planets_degut[key], key) for key in keys]
 
-        # Ajustar ángulos para asegurar que no haya diferencias menores a 10 grados
         def adjust_planet_angles(planets):
             planets.sort(key=lambda planet: planet[1])
             n = len(planets)
             adjusted_angles = [planets[0][1]]
-
+            
+            detection_distance = 5
+            new_distance = 6.5
+            
             for i in range(1, n):
                 previous_angle = adjusted_angles[-1]
                 current_angle = planets[i][1]
 
-                # Asegurarse de que la diferencia es al menos 10 grados
-                if current_angle - previous_angle < 10:
-                    current_angle = previous_angle + 10
-
-                # Asegurarse de que el ángulo no exceda 360 grados
+                if current_angle - previous_angle < detection_distance:
+                    current_angle = previous_angle + new_distance
 
                 adjusted_angles.append(current_angle)
 
-            # Verificación adicional para comparar todos los planetas con cada uno de los otros planetas
             for i in range(n):
                 for j in range(i + 1, n):
-                    if abs(adjusted_angles[j] - adjusted_angles[i]) < 10:
-                        adjusted_angles[j] = (adjusted_angles[i] + 10) % 360
+                    if abs(adjusted_angles[j] - adjusted_angles[i]) < detection_distance:
+                        adjusted_angles[j] = (adjusted_angles[i] + new_distance) % 360
 
-            # Ajustar los ángulos en la lista original
             for i in range(n):
                 planets[i] = (planets[i][0], adjusted_angles[i])
 
@@ -688,11 +678,10 @@ class KerykeionChartSVG:
 
         adjusted_planets = adjust_planet_angles(planets)
         
-        # Generar el output basado en los ángulos ajustados
         output = ""
         scale = 0.6
-        rplanet = 109
-
+        rplanet = 101
+        
         for planet in adjusted_planets:
             i, adjusted_angle = planet
             offset = adjusted_angle + (int(self.user.houses_degree_ut[6]) / -1)
@@ -701,11 +690,20 @@ class KerykeionChartSVG:
 
             output += f'<g transform="translate(-{12 * scale},-{12 * scale})"><g transform="scale({scale})"><use x="{planet_x * (1/scale)}" y="{planet_y * (1/scale)}" xlink:href="#{self.available_planets_setting[i]["name"]}" /></g></g>'
 
+            trueoffset = (int(self.user.houses_degree_ut[6]) / -1) + int(self.points_deg_ut[i])
+            # line1
+            linelenght = 12.5
+            x1 = sliceToX(0, (r - self.c3), trueoffset) + self.c3
+            y1 = sliceToY(0, (r - self.c3), trueoffset) + self.c3
+            x2 = sliceToX(0, (r - rplanet - linelenght), trueoffset) + rplanet + linelenght
+            y2 = sliceToY(0, (r - rplanet - linelenght), trueoffset) + rplanet + linelenght
+            color = "white"
+            output += (
+                '<line x1="%s" y1="%s" x2="%s" y2="%s" style="stroke-width:1px;stroke:%s;stroke-opacity:1;"/>\n'
+                % (x1, y1, x2, y2, color)
+            )
+
         return output
-
-
-
-
 
     def _makePatterns(self):
         """
@@ -859,7 +857,7 @@ class KerykeionChartSVG:
         for element in self.aspects_list:
             out += self._drawAspect(
                 r,
-                ar,
+                ar-3.6, 
                 element["p1_abs_pos"],
                 element["p2_abs_pos"],
                 self.aspects_settings[element["aid"]]["color"],
@@ -1155,7 +1153,7 @@ class KerykeionChartSVG:
         if self.chart_type == "ExternalNatal" or self.chart_type == "Natal":
             self.c1 = 56
             self.c2 = 92
-            self.c3 = 120
+            self.c3 = 110
         else:
             self.c1 = 12
             self.c2 = 36
