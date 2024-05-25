@@ -1427,7 +1427,4 @@ if __name__ == "__main__":
     natalChart3 = KerykeionChartSVG(third, "Natal", None, None, None, "Symbol" , "Gadugi", None, None, None,None)
     natalChart3.makeSVG()
 
-    lista_fuentes = font_manager.get_font_names()
-    lista_fuentes_ordenada = sorted(lista_fuentes)
-    for x in lista_fuentes_ordenada:
-        print(x)
+

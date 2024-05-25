@@ -34,6 +34,7 @@ def generar_archivo():
     subject = AstrologicalSubject(name, year, month, day, hour, minute, city, nation)
     chart = KerykeionChartSVG(subject, "Natal", None, "output", style_path, font, font_name,  bg_color, bg_image, bg_image_wheel, name_spacing)
     chart.makeSVG()
+    print(chart.font, chart.font_name)
     svg_file_path = chart.chartname
     return send_file(svg_file_path,
                      mimetype='image/svg+xml',
