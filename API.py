@@ -20,7 +20,7 @@ def generar_archivo():
     nation = data.get('nation', 'GB')
     style = data.get('style')
     font = data.get('font', "Belgan Aesthetic")
-    font_name = data.get('font_name', "Belgan Aesthetic")
+    font_name = data.get('font-name', "Belgan Aesthetic")
     bg_image_wheel = data.get('bg_image_wheel', None)
     bg_image = data.get('bg_image', None)
     bg_color = data.get('bg_color', None)
