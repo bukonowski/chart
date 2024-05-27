@@ -19,8 +19,8 @@ from string import Template
 from typing import Union
 
 
-font_dirs = ["fonts"]  # The path to the custom font file.
-font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+font_dir = Path(__file__).resolve().parent / 'fonts'
+font_files = font_manager.findSystemFonts(fontpaths=str(font_dir))
 for font_file in font_files:
     font_manager.fontManager.addfont(font_file)
 
