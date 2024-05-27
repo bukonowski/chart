@@ -1,6 +1,5 @@
 from kerykeion.charts.kerykeion_chart_svg import KerykeionChartSVG
 from kerykeion.astrological_subject import AstrologicalSubject
-from matplotlib import font_manager 
 from pathlib import Path
 from flask import Flask, request, send_file
 
@@ -35,12 +34,6 @@ def generar_archivo():
     subject = AstrologicalSubject(name, year, month, day, hour, minute, city, nation)
     chart = KerykeionChartSVG(subject, "Natal", None, "output", style_path, font, font_name,  bg_color, bg_image, bg_image_wheel, name_spacing)
     chart.makeSVG()
-    print(chart.font, chart.font_name)
-    print("-----------------------------------------------")
-    lista_fuentes = font_manager.get_font_names()
-    lista_fuentes_ordenada = sorted(lista_fuentes)
-    for x in lista_fuentes_ordenada:
-        print(x)
     svg_file_path = chart.chartname
     return send_file(svg_file_path,
                      mimetype='image/svg+xml',

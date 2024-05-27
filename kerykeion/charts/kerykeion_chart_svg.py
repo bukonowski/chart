@@ -1427,4 +1427,3 @@ if __name__ == "__main__":
     natalChart3 = KerykeionChartSVG(third, "Natal", None, None, None, "Symbol" , "Gadugi", None, None, None,None)
     natalChart3.makeSVG()
 
-
