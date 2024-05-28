@@ -48,9 +48,3 @@ def generar_archivo():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8000, debug=False)
-
-
-# TODO: Limpiar proyecto¿?
-# TODO: Subir el proyecto a koyeb.app (Quizá con la cuenta de chambeadevs)
-# TODO: Si usamos la cuenta de chambeadevs hay que hacerle un github
-# TODO:subir la colección de postman a rapidapi

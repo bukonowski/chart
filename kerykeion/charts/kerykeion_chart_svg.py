@@ -361,8 +361,8 @@ class KerykeionChartSVG:
 
             out += f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" style="stroke:{self.chart_colors_settings["paper_0"]}; stroke-width: 1px; stroke-opacity:1;"/>'
 
-            #anillo externo
-            rad2= 10     #Con esto modifiquo el radio
+
+            rad2= 10
             x1b = sliceToX(0, r- 4  - (self.c1+rad2), offset) +4+ (self.c1+rad2)
             y1b = sliceToY(0, r- 4 - (self.c1+rad2), offset) +4+ (self.c1+rad2)
             x2b = sliceToX(0, r + 4 - (self.c1+rad2), offset) - 4 + (self.c1+rad2)
@@ -876,17 +876,17 @@ class KerykeionChartSVG:
         counter = 0
         
         aspect_coordinates = {
-            0: {"x": 1, "y": -1}, #Circulo con palito diagonal superior
+            0: {"x": 1, "y": -1},
             30: {"x": 0, "y": 0}, 
             45: {"x": 0, "y": 0}, 
-            60: {"x": 1.2, "y": -0.5}, # x
-            72: {"x": 0.5, "y": -1.5}, #Q
-            90: {"x": 0.5, "y": -1}, # Cuadrado
-            120: {"x": 0.8, "y": -1}, # Triangulo
+            60: {"x": 1.2, "y": -0.5},
+            72: {"x": 0.5, "y": -1.5},
+            90: {"x": 0.5, "y": -1},
+            120: {"x": 0.8, "y": -1},
             135: {"x": 0, "y": 0},
             144: {"x": 0, "y": 0},
             150: {"x": 0, "y": 0},
-            180: {"x": 0, "y": -2}, #Nodo 
+            180: {"x": 0, "y": -2},
         }
         
         for a in revr:
@@ -1192,7 +1192,7 @@ class KerykeionChartSVG:
 
             self.offset = 360 - self.user.houses_degree_ut[6]
             perimeter = 2 * 3.1416 * 194
-            segments_number = 12 # Number of segments
+            segments_number = 12
             separation_percentage = 5 
             segment_length = perimeter / segments_number 
             separation_length = segment_length * separation_percentage / 100
@@ -1411,12 +1411,8 @@ if __name__ == "__main__":
     from kerykeion.utilities import setup_logging
     #setup_logging(level="debug")
 
-    first = AstrologicalSubject("John q", 2003, 2, 22, 3, 5, "Bogota", "CO")
+    first = AstrologicalSubject("John ", 2003, 2, 22, 3, 5, "Bogota", "CO")
     second = AstrologicalSubject("Paul McCartney", 1942, 6, 18, 15, 30, "Bogota", "CO")
-    third = AstrologicalSubject("Pablito", 2020, 1, 6, 6, 56, "Buenos Aires", "AR")
-    
-    imageURL = "https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2400.jpg"
-    wheel_url = "https://images3.memedroid.com/images/UPLOADED946/6041385115c72.jpeg"
 
     natalChart = KerykeionChartSVG(first, "Natal", None, None, None, "Symbol" , "Gadugi", "#7D4BE7" , None, None,None)
     natalChart.makeSVG()
@@ -1424,6 +1420,3 @@ if __name__ == "__main__":
     natalChart2 = KerykeionChartSVG(second, "Natal", None, None, None, "Symbol" , "Gadugi", None, None, None,None)
     natalChart2.makeSVG()
     
-    natalChart3 = KerykeionChartSVG(third, "Natal", None, None, None, "Symbol" , "Gadugi", None, None, None,None)
-    natalChart3.makeSVG()
-
